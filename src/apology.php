@@ -100,7 +100,59 @@ $html .= "<strong>Bankverbindung</strong>:"
  
  */
 
-$html = 'Tut mir Leid';
+$html = '
+<!DOCTYPE html>
+<html lang="DE">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .underline {
+            text-decoration: underline;
+        }
+
+        .alignRight {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<?php
+    include "config.php";
+?>
+<p>
+<span class="underline">Vorname Nachname - Straße 1 - 12345 Stadt</span><br>
+Akademi<br>
+Stra0e<br>
+65432 Stadt<br>
+<span class="alignRight">Stadt, 14.10.2019</span>
+</p>
+
+<br><br><br><br><br>
+
+<p>
+<strong>Entschuldigung für Abwesenheit</strong><br>
+14.10.19 | Von 11.45 Uhr bis 11:50 Uhr abwesend | 5 Minuten verpasst
+</p>
+
+<br><br><br><br>
+
+<p>
+Sehr geehrter Herr Mustermann,<br><br>
+hiermit entschuldige ich mich für Montag, den 14.10.2019. Ich habe mich verspätet. / Ich bin früher gegangen. / Ich bin später gekommen. Ich war zwischen 11:45 Uhr und 11:50 Uhr abwesend und habe dadurch 5 Minuten vom Unterricht verpasst.<br><br>
+Grund: Ich habe die Zeit vergessen. / Ich hatte Bauchschmerzen. / Ich hatte private Gründe.
+</p>
+
+<br><br>
+
+Mit freundlichen Grüßen
+
+<br><br><br>
+
+Max Mustermann
+
+</body>
+</html>';
  
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
