@@ -155,16 +155,17 @@ Max Mustermann
 </html>';
  
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+    // Create PDF document
+    // Load library
+    require_once('ext/TCPDF/tcpdf.php');
+
+    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
  
-// TCPDF Library laden
-require_once('ext/TCPDF/tcpdf.php');
- 
-// Erstellung des PDF Dokuments
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
- 
-// Dokumenteninformationen
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor("Name");//$inv -> pdfAuthor);
+    // Document informations
+    $pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor($_GET['fullname']);//$inv -> pdfAuthor);
 $pdf->SetTitle("Entschuldigung");//$inv -> getInvoiceName());
 $pdf->SetSubject("Endschuldigung");//$inv -> getInvoiceName());
  
