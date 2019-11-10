@@ -6,9 +6,34 @@
     <link href="layout.css" rel="stylesheet">
 </head>
 <body>
-  <form action="apology.php" method="POST">
-    <input type="text" name="fullname" placeholder="Name">
-    <input type="text" name="address" placeholder="Adresse">
+    <h2>Entschuldigung Minuten</h2>
+    <form action="apology.php" method="POST">
+        <label for="fullname">Vor- und Nachname:</label><br>
+        <input type="text"
+            id="fullname" name="fullname"
+            placeholder="Vor- und Nachname" required><br>
+
+        <label for="street">Straße:</label><br>
+        <input type="text"
+            id="street" name="street"
+            placeholder="Straße und Hausnummer" required><br>
+
+        <label for="postalcode">PLZ:</label><br>
+        <input type="text"
+            id="postalCode" name="postalCode"
+            placeholder="PLZ" required>
+
+        <label for="city">Stadt:</label><br>
+        <input type="text"
+            id="city" name="city"
+            placeholder="Stadt" required>
+
+        <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>">
+        <input type="time" name="time_from" placeholder="Abwesend von">
+        <input type="time" name="time_to" placeholder="Abwesend bis">
+
+        <select
+
     <select name="type">
       <option value="minutes" selected>Minuten</option>
       <option value="days">Tage</option>
