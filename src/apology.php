@@ -95,12 +95,12 @@
     
     // Get data from receiver
     include "config.php";
-
-    if ($_GET["type"] == "minutes") {
-        // Check if minute data are given
-        checkParameters($minutesParams);
-        // Important: No indentation in the contents, as these cause indentations in the output
-        $content = '
+    
+    // Set header for every document
+    // Important: No indentation in the contents,
+    // as these cause indentations in the output
+    // ---- Header Start ---->
+    $header = '
 <!DOCTYPE html>
 <html lang="DE">
 <head>
@@ -131,16 +131,16 @@
 <p></p>
 
 <p>
-<strong>Entschuldigung für Abwesenheit</strong><br>
-' . $_GET['absenceDate'] . ' | Von ' . formatTime($_GET['time_from']) . ' Uhr bis ' . formatTime($_GET['time_to']) . ' Uhr abwesend | ' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten verpasst
-</p>
-
-<p></p>
-/// --> Wochentag
+<strong>Entschuldigung für Abwesenheit</strong><br>';
+    // <---- Header End ----
+    
+    // Footer for every document
+    // Important: No indentation in the contents,
+    // as these cause indentations in the output
+    // ---- Footer Start ---->
+    $footer = '
 <p>
-' . $config['salutation'] . ',<br><br>
-hiermit entschuldige ich mich für <strong>' . getDayName($_GET['absenceDate']) . ', den ' . $_GET['absenceDate'] . '</strong>. ' . $_GET['typeOfDelay'] . '. Ich war zwischen <strong>' . formatTime($_GET['time_from']) . ' und ' . formatTime($_GET['time_to']) . ' Uhr abwesend</strong> und habe dadurch <strong>' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten</strong> vom Unterricht verpasst.<br><br>
-Grund: ' . htmlspecialchars ($_GET['explanation']) . '
+Grund: ' . getMaskedGet('explanation') . '
 </p>
 
 <p></p>
@@ -152,13 +152,40 @@ Mit freundlichen Grüßen
 . $fullname . '
 </body>
 </html>';
-    } else if ($_GET["type"] == "days") {
-        // TODO: --> Check für Tage
+    // <---- Footer End ----
+
+    if (getMaskedGet('type') == "minutes") {
+        // Check if minute data are given
+        checkParameters($minutesParams);
+        
+        // Important: No indentation in the contents,
+        // as these cause indentations in the output
+        $content =
+getMaskedGet('absenceDate') . ' | Von ' . formatTime(getMaskedGet('time_from')) . ' Uhr bis ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend | ' . timeDif(getMaskedGet('time_from'), getMaskedGet('time_to')) . ' Minuten verpasst
+</p>
+
+<p></p>
+
+<p>
+' . $config['salutation'] . ',<br><br>
+hiermit entschuldige ich mich für <strong>' . getDayName(getMaskedGet('absenceDate')) . ', den ' . getMaskedGet('absenceDate') . '</strong>. ' . $_GET['typeOfDelay'] . '. Ich war zwischen <strong>' . formatTime(getMaskedGet('time_from')) . ' und ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend</strong> und habe dadurch <strong>' . timeDif(getMaskedGet('time_from'), getMaskedGet('time_to')) . ' Minuten</strong> vom Unterricht verpasst.
+</p>';
     }
- 
-//////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    else if (getMaskedGet('type') == "days") {
+        // Important: No indentation in the contents,
+        // as these cause indentations in the output
+        $content =
+getMaskedGet('absenceDate') . ' | 1 Tag verpasst
+</p>
 
+<p></p>
 
+<p>
+' . $config['salutation'] . ',<br><br>
+hiermit entschuldige ich mich für <strong>' . getDayName(getMaskedGet('absenceDate')) . ', den ' . getMaskedGet('absenceDate') . '</strong>. Ich war an diesem Tag <strong>abwesend</strong>.
+</p>';
+    }
+    
     // Create PDF document
     // Load library
     require_once('ext/TCPDF/tcpdf.php');
