@@ -2,43 +2,77 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link href="layout.css" rel="stylesheet">
+    <title>Entschuldigungs-Generator</title>
+    <link href="./ext/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    <h2>Entschuldigung Minuten</h2>
-    <form action="apology.php" method="POST">
-        <label for="fullname">Vor- und Nachname:</label><br>
-        <input type="text"
-            id="fullname" name="fullname"
-            placeholder="Vor- und Nachname" required><br>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="./">Entschuldigungs-Generator</a>
+        <input type="checkbox" id="navbar-toggle-cbox">
+        <label for="navbar-toggle-cbox" class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+            &#9776;
+        </label>
+        <div class="collapse navbar-collapse">
 
-        <label for="street">Straße:</label><br>
-        <input type="text"
-            id="street" name="street"
-            placeholder="Straße und Hausnummer" required><br>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">Fehlzeit: (mehrere) Tage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">Fehlzeit: Stunden/Minuten</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <label for="postalcode">PLZ:</label><br>
-        <input type="text"
-            id="postalCode" name="postalCode"
-            placeholder="PLZ" required>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Say sorry the right way!</h1>
+            <p class="lead">Mit diesem simplen PDF-Generator für Entschuldigungen in der Schule verzeiht dir dein Lehrer garantiert!</p>
 
-        <label for="city">Stadt:</label><br>
-        <input type="text"
-            id="city" name="city"
-            placeholder="Stadt" required>
+            <hr class="my-4">
 
-        <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>">
-        <input type="time" name="time_from" placeholder="Abwesend von">
-        <input type="time" name="time_to" placeholder="Abwesend bis">
+            <p>Wähle zuerst deine <strong>Fehlzeit</strong> aus:</p>
+            <div class="row">
+                <div class="col-lg-6 card">
+                    <div class="card-body">
+                        <h5 class="card-title">(mehrere) Tage</h5>
+                        <p class="card-text">Du hast gleich ein Tag oder sogar mehrere gefehlt?</p>
+                        <a href="./index.php" class="btn btn-primary stretched-link">klick hier!</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 card">
+                    <div class="card-body">
+                        <h5 class="card-title">Stunden/Minuten</h5>
+                        <p class="card-text">Du bist nur ein paar Stunden oder ein paar Minuten zu spät?</p>
+                        <a href="./index.php" class="btn btn-primary stretched-link">hier entlang!</a>
+                    </div>
+                </div>
+            </div>
+<!--            <ul>-->
+<!--                <li><a href="./index.php">(mehrere) Tage</a></li>-->
+<!--                <li><a href="./index.php">Stunden/Minuten</a></li>-->
+<!--            </ul>-->
+<!--            <form action="./route.php">-->
+<!--                <div class="form-row">-->
+<!--                    <div class="col-auto">-->
+<!--                        <select class="form-control" id="chooseMissingType">-->
+<!--                            <option>(mehrere) Tage</option>-->
+<!--                            <option>Stunden/Minuten</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <div class="col-auto">-->
+<!--                        <button type="submit" class="btn btn-primary ">Weiter</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
 
-        <select
-
-    <select name="type">
-      <option value="minutes" selected>Minuten</option>
-      <option value="days">Tage</option>
-    </select>
-    <button>Erstellen</button>
-  </form>
+        </div>
+    </div>
 </body>
 </html>
