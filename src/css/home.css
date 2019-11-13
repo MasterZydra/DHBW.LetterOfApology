@@ -1,0 +1,27 @@
+/*** jumbotron ***/
+/*big component to show key marketing features*/
+.jumbotron{
+    background-color: #e9e8e8;
+    padding: 1rem 3rem 3rem;
+    margin-bottom: 1rem;
+}
+/*increase font-size and decrease font-weight of title from jumbotron*/
+.jumbotron h1{
+    font-weight: 100;
+    font-size: 3rem;
+}
+/*increase font-size of caption in jumbotron*/
+.jumbotron .lead{
+    font-size: 1.25rem;
+}
+
+
+/*** cards ***/
+.card{
+    background-color: white;
+    padding: 1rem 2rem 1.5rem;
+}
+/*remove default margin from h3 in card to make margin/padding of siblings easier*/
+.card h3{
+    margin: unset;
+}
