@@ -61,56 +61,65 @@
     // Get data from receiver
     include "config.php";
 
-$html = '
+    if ($_GET["type"] == "minutes") {
+        // Check if minute data are given
+        checkParameters($minutesParams);
+        // Important: No indentation in the contents, as these cause indentations in the output
+        $content = '
 <!DOCTYPE html>
 <html lang="DE">
 <head>
     <meta charset="UTF-8">
+    <title>Entschuldigung für Abwesenheit</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .underline {
             text-decoration: underline;
         }
-
-        .alignRight {
-            float: right;
-        }
     </style>
 </head>
 <body>
 <p>
-<span class="underline">Vorname Nachname - Straße 1 - 12345 Stadt</span><br>
-Akademi<br>
-Stra0e<br>
-65432 Stadt<br>
-<span class="alignRight">Stadt, 14.10.2019</span>
+<span class="underline">'
+    . $_GET['fullname'] . ' - ' . $_GET['street'] . ' - ' . $_GET['postalCode'] . ' ' . $_GET['city'] . '</span><br>
+' . $config['receiver_name'] . '<br>
+' . $config['receiver_street'] . '<br>
+' . $config['receiver_postalCode'] . ' ' . $config['receiver_city'] . '<br>
+<table cellpadding="0" cellspacing="0" style="width: 100%; ">
+    <tr>
+        <td width="75%"></td>
+        <td>' . $config['receiver_city'] . ', ' . $_GET['absenceDate'] . '</td>
+    </tr>
+</table>
 </p>
-
-<br><br><br><br><br>
+    
+<p></p>
 
 <p>
 <strong>Entschuldigung für Abwesenheit</strong><br>
-14.10.19 | Von 11.45 Uhr bis 11:50 Uhr abwesend | 5 Minuten verpasst
+' . $_GET['absenceDate'] . ' | Von ' . formatTime($_GET['time_from']) . ' Uhr bis ' . formatTime($_GET['time_to']) . ' Uhr abwesend | ' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten verpasst
 </p>
 
-<br><br><br><br>
-
+<p></p>
+/// --> Wochentag
 <p>
-Sehr geehrter Herr Mustermann,<br><br>
-hiermit entschuldige ich mich für Montag, den 14.10.2019. Ich habe mich verspätet. / Ich bin früher gegangen. / Ich bin später gekommen. Ich war zwischen 11:45 Uhr und 11:50 Uhr abwesend und habe dadurch 5 Minuten vom Unterricht verpasst.<br><br>
-Grund: Ich habe die Zeit vergessen. / Ich hatte Bauchschmerzen. / Ich hatte private Gründe.
+' . $config['salutation'] . ',<br><br>
+hiermit entschuldige ich mich für <strong>' . getDayName($_GET['absenceDate']) . ', den ' . $_GET['absenceDate'] . '</strong>. ' . $_GET['typeOfDelay'] . '. Ich war zwischen <strong>' . formatTime($_GET['time_from']) . ' und ' . formatTime($_GET['time_to']) . ' Uhr abwesend</strong> und habe dadurch <strong>' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten</strong> vom Unterricht verpasst.<br><br>
+Grund: ' . htmlspecialchars ($_GET['explanation']) . '
 </p>
 
-<br><br>
+<p></p>
 
 Mit freundlichen Grüßen
 
-<br><br><br>
-
-Max Mustermann
-
+<p></p>
+'
+. $_GET['fullname'] . '
 </body>
 </html>';
+    } else if ($_GET["type"] == "days") {
+        // TODO: --> Check für Tage
+    }
  
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -155,7 +164,7 @@ $pdf->SetPrintFooter(false);
 $pdf->AddPage();
  
 // Fügt den HTML Code in das PDF Dokument ein
-$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->writeHTML($content, true, false, true, false, '');
  
 //Ausgabe der PDF
  
