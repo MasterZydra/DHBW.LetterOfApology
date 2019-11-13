@@ -28,6 +28,17 @@
         return $time;
     }
     
+    /*
+     * Calculate time difference between to given time stamps
+     */
+    function timeDif($time1, $time2) {
+        // Convert string to DateTime
+        $from = DateTime::createFromFormat('H:i', $time1);
+        $to = DateTime::createFromFormat('H:i', $time2);
+        // Calc dif and get dif in minutes
+        return abs($to->getTimestamp() - $from->getTimestamp()) / 60;
+    }
+    
 
 $html = '
 <!DOCTYPE html>
