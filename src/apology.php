@@ -39,6 +39,17 @@
         return abs($to->getTimestamp() - $from->getTimestamp()) / 60;
     }
     
+    /*
+     * Return day name of a given day.
+     */
+    function getDayName($day) {
+        // Get DateTime from String
+        $day = DateTime::createFromFormat('d.m.Y', $day);
+        // Set to German
+        setlocale(LC_TIME, "de_DE");
+        // Return day name
+        return $day->format('l');
+    }
 
 $html = '
 <!DOCTYPE html>
