@@ -10,10 +10,15 @@
     <form action="apology.php" method="GET">
         <input type="hidden"
             name="type" value="minutes">
-        <label for="fullname">Vor- und Nachname:</label><br>
+        <label for="firstname">Vorname:</label><br>
         <input type="text"
-            id="fullname" name="fullname"
-            placeholder="Vor- und Nachname" required><br>
+            id="firstname" name="firstname"
+            placeholder="Vorname" required><br>
+
+        <label for="lastname">Nachname:</label><br>
+        <input type="text"
+            id="lastname" name="lastname"
+            placeholder="Nachname" required><br>
 
         <label for="street">Straße:</label><br>
         <input type="text"
