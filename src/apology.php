@@ -69,6 +69,14 @@
         return $file  . '.pdf';
     }
     
+    /*
+     * Convert special characters to HTML entities
+     * to prevent Cross Site Scripting (XSS)
+     */
+    function getMaskedGet($name) {
+        return htmlspecialchars($_GET[$name]);
+    }
+    
     // Arrays with necessary parameters
     $primaryParams = array("type", "firstname", "lastname", "street", "postalCode", "city", "explanation", "absenceDate");
     $minutesParams = array("time_from", "time_to", "typeOfDelay");
