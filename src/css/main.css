@@ -1,16 +1,133 @@
+/*** general ***/
+/*set global font and remove global margin*/
+body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+}
+/*change default color and remove underline from a link*/
+a{
+    text-decoration: unset;
+    color: black;
+}
 .container{
-    margin-top: 4.5rem;
+    /*set width/max-width of standard content container*/
+    width: 70%;
+    max-width: 1000px;
+    /*set offset from above and center it automatically*/
+    margin: 4rem auto auto;
+}
+/*set appearance of "buttons"*/
+.button{
+    background-color: royalblue;
+    color: white;
+    padding: .5rem;
+}
+/*default class to make things rooouuund */
+.round{
+    border-radius: 4px;
 }
 
-#navbar-toggle-cbox:checked ~ .collapse {
-    display:block;
+
+/*** top navigation bar ***/
+.navbar{
+    width: 100%;
+    height: 2.5rem;
+    padding: .5rem 1rem;
+    background-color: #f0f0f0;
+    /*make navbar fixed to top*/
+    position: fixed;
+    top: 0;
+    /*center all children*/
+    display: flex;
+    align-items: center;
+}
+.navbar-title h1{
+    /*reduce default font-weight of h1 to 400 */
+    font-weight: 400;
 }
 
-#navbar-toggle-cbox {
-    display: none;
+
+/*** jumbotron ***/
+/*big component to show key marketing features*/
+.jumbotron{
+    background-color: #e9e8e8;
+    padding: 1rem 3rem 3rem;
+    margin-bottom: 1rem;
 }
-.navbar-toggler {
-    background: white;
-    border-radius: 2px;
-    margin-bottom: unset;
+/*increase font-size and decrease font-weight of title from jumbotron*/
+.jumbotron h1{
+    font-weight: 100;
+    font-size: 3rem;
+}
+/*increase font-size of caption in jumbotron*/
+.jumbotron .lead{
+    font-size: 1.25rem;
+}
+
+
+/*** cards ***/
+.card{
+    background-color: white;
+    padding: 1rem 2rem 1.5rem;
+}
+/*remove default margin from h3 in card to make margin/padding of siblings easier*/
+.card h3{
+    margin: unset;
+}
+
+
+/*** rows ***/
+.row{
+    display: flex;
+}
+/*for two columns in one row: to equalize size of columns in this row*/
+.row .col-2{
+    width: 100%;
+}
+/*add equal space between each column, when next to each other*/
+.col-2:nth-child(odd) {
+    margin-right: 1rem;
+}
+.col-2:nth-child(even) {
+    margin-left: 1rem;
+}
+
+
+/*** media queries ***/
+/*css for different screen widths for responsive views and line breaks of different objects/divs*/
+/*for window-screen with width lower than 1000px*/
+@media (max-width: 1000px) {
+    /*increase width of standard content container for less unused space left and right on smaller screens*/
+    .container{
+        width: 80%;
+    }
+
+    /*break the columns in new lines*/
+    .row{
+        flex-direction: column;
+    }
+    /*remove width of columns to not exceed the width of its parent (because the width was 100% before)*/
+    .row .col-2{
+        width: unset;
+    }
+    /*remove left/right margin from columns and add top/bottom margin, since the columns breaked in a new line*/
+    .col-2:nth-child(odd) {
+        margin-right: unset;
+        margin-bottom: 1rem;
+    }
+    .col-2:nth-child(even) {
+        margin-left: unset;
+        margin-top: 1rem;
+    }
+}
+/*for window-screen with width lower than 600px*/
+@media (max-width: 600px) {
+    /*increase width of standard content container for less unused space left and right on smaller screens*/
+    .container{
+        width: 90%;
+    }
+    /*lower padding for jumbotron for better looks on small screens*/
+    .jumbotron{
+        padding: 0 1rem 2rem;
+    }
 }
