@@ -88,6 +88,11 @@
     // Check if primary data are given
     checkParameters($primaryParams);
     
+    // Build full name for easier use
+    $fullname = getMaskedGet('firstname') . ' ' . getMaskedGet('lastname');
+    // Get file name for PDF document
+    $pdfName = getFileName(getMaskedGet('absenceDate'));
+    
     // Get data from receiver
     include "config.php";
 
