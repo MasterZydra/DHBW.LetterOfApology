@@ -150,6 +150,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('dejavusans', '', 10);
  
 // Neue Seite
+$pdf->SetPrintHeader(false);
+$pdf->SetPrintFooter(false);
 $pdf->AddPage();
  
 // Fügt den HTML Code in das PDF Dokument ein
