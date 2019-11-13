@@ -51,6 +51,24 @@
         return $day->format('l');
     }
     
+    /*
+     * Generate file name from given date and type
+     */
+    function getFileName($date) {
+        // Get DateTime from String
+        $day = DateTime::createFromFormat('d.m.Y', $date);
+        // Add date to file name
+        $file = $day->format('Y-m-d') . " Entschuldigung ";
+        // Add type of apology
+        if (getMaskedGet('type') == "minutes") {
+            $file .= "Minuten";
+        } else if (getMaskedGet('type') == "days") {
+            $file .= "Tage";
+        }
+        // Return file name with extension
+        return $file  . '.pdf';
+    }
+    
     // Arrays with necessary parameters
     $primaryParams = array("type", "firstname", "lastname", "street", "postalCode", "city", "explanation", "absenceDate");
     $minutesParams = array("time_from", "time_to", "typeOfDelay");
