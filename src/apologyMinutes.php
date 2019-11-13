@@ -8,6 +8,8 @@
 <body>
     <h2>Entschuldigung Minuten</h2>
     <form action="apology.php" method="POST">
+        <input type="hidden"
+            name="type" value="minutes">
         <label for="fullname">Vor- und Nachname:</label><br>
         <input type="text"
             id="fullname" name="fullname"
@@ -31,13 +33,6 @@
         <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>">
         <input type="time" name="time_from" placeholder="Abwesend von">
         <input type="time" name="time_to" placeholder="Abwesend bis">
-
-        <select
-
-    <select name="type">
-      <option value="minutes" selected>Minuten</option>
-      <option value="days">Tage</option>
-    </select>
     <button>Erstellen</button>
   </form>
 </body>
