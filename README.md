@@ -10,6 +10,11 @@ AuthUserFile \absoluter\pfad\zur\.htpasswd
 ```
 
 ## Admin-Passwort ändern
+Das Standardpasswort und der Standardbenutzer sind:
+```
+Benutzer: admin
+Passwort: Sicher2019%
+```
 Um das Admin-Passwort zu ändern, muss folgendes in die Windows Konsole eingegeben werden:
 ```
 C:\xampp\apache\bin>htpasswd.exe -c C:\xampp\htdocs\DHBW.LetterOfApology\.htpasswd admin
