@@ -12,6 +12,22 @@
             }
         }
     }
+    
+    /*
+     * Format output of time.
+     * Add leading zero to time if necessary.
+     */
+    function formatTime($time) {
+        // e.g.  1:00 --> len = 4
+        // e.g. 10:00 --> len = 5
+        if (strlen($time) == 4) {
+            // Add leading zero
+            return "0" . $time;
+        }
+        // Else return
+        return $time;
+    }
+    
 
 $html = '
 <!DOCTYPE html>
