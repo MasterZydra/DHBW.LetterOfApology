@@ -45,6 +45,11 @@ a{
     /*reduce default font-weight of h1 to 400 */
     font-weight: 400;
 }
+.navbar .admin-button{
+    /*position admin-button correctly*/
+    position: absolute;
+    right: 3rem;
+}
 
 
 /*** rows ***/
@@ -96,9 +101,5 @@ a{
     /*increase width of standard content container for less unused space left and right on smaller screens*/
     .container{
         width: 90%;
-    }
-    /*lower padding for jumbotron for better looks on small screens*/
-    .jumbotron{
-        padding: 0 1rem 2rem;
     }
 }
