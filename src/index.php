@@ -26,7 +26,7 @@
                 <div class="col-2 card round">
                     <h3 class="card-title">Stunden/Minuten</h3>
                     <p>Du bist "nur" ein paar Stunden oder ein paar Minuten zu spät?</p>
-                    <a href="./index.php" class="button round">klick hier!</a>
+                    <a href="./apologyMinutes.php" class="button round">klick hier!</a>
                 </div>
             </div>
         </div>
