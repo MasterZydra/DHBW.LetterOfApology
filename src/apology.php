@@ -1,4 +1,6 @@
 <?php
+    // Erstellt von 6439456
+    
     /*
      * Check if all names are found in the URL as GET.
      * If not, go to start page
@@ -77,6 +79,7 @@
         return htmlspecialchars($_GET[$name]);
     }
     
+    
     // Arrays with necessary parameters
     $primaryParams = [
         "type", "firstname", "lastname",
@@ -95,6 +98,7 @@
     
     // Get data from receiver
     include "config.php";
+    
     
     // Set header for every document
     // Important: No indentation in the contents,
@@ -116,11 +120,14 @@
 <body>
 <p>
 <span class="underline">'
-    . $fullname . ' - ' . getMaskedGet('street') . ' - ' . getMaskedGet('postalCode') . ' ' . getMaskedGet('city') . '</span><br>
+. $fullname . ' - '
+. getMaskedGet('street') . ' - '
+. getMaskedGet('postalCode') . ' ' . getMaskedGet('city')
+. '</span><br>
 ' . $config['receiver_name'] . '<br>
 ' . $config['receiver_street'] . '<br>
 ' . $config['receiver_postalCode'] . ' ' . $config['receiver_city'] . '<br>
-<table cellpadding="0" cellspacing="0" style="width: 100%; ">
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
     <tr>
         <td width="75%"></td>
         <td>' . $config['receiver_city'] . ', ' . getMaskedGet('absenceDate') . '</td>
@@ -133,6 +140,7 @@
 <p>
 <strong>Entschuldigung für Abwesenheit</strong><br>';
     // <---- Header End ----
+    
     
     // Footer for every document
     // Important: No indentation in the contents,
@@ -154,6 +162,7 @@ Mit freundlichen Grüßen
 </html>';
     // <---- Footer End ----
 
+    
     if (getMaskedGet('type') == "minutes") {
         // Check if minute data are given
         checkParameters($minutesParams);
@@ -161,14 +170,24 @@ Mit freundlichen Grüßen
         // Important: No indentation in the contents,
         // as these cause indentations in the output
         $content =
-getMaskedGet('absenceDate') . ' | Von ' . formatTime(getMaskedGet('time_from')) . ' Uhr bis ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend | ' . timeDif(getMaskedGet('time_from'), getMaskedGet('time_to')) . ' Minuten verpasst
+getMaskedGet('absenceDate') . ' | Von ' . formatTime(getMaskedGet('time_from'))
+. ' Uhr bis ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend | '
+. timeDif(getMaskedGet('time_from'), getMaskedGet('time_to'))
+. ' Minuten verpasst
 </p>
 
 <p></p>
 
 <p>
 ' . $config['salutation'] . ',<br><br>
-hiermit entschuldige ich mich für <strong>' . getDayName(getMaskedGet('absenceDate')) . ', den ' . getMaskedGet('absenceDate') . '</strong>. ' . $_GET['typeOfDelay'] . '. Ich war zwischen <strong>' . formatTime(getMaskedGet('time_from')) . ' und ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend</strong> und habe dadurch <strong>' . timeDif(getMaskedGet('time_from'), getMaskedGet('time_to')) . ' Minuten</strong> vom Unterricht verpasst.
+hiermit entschuldige ich mich für <strong>'
+. getDayName(getMaskedGet('absenceDate')) . ', den '
+. getMaskedGet('absenceDate') . '</strong>. ' . $_GET['typeOfDelay']
+. '. Ich war zwischen <strong>' . formatTime(getMaskedGet('time_from'))
+. ' und ' . formatTime(getMaskedGet('time_to'))
+. ' Uhr abwesend</strong> und habe dadurch <strong>'
+. timeDif(getMaskedGet('time_from'), getMaskedGet('time_to'))
+. ' Minuten</strong> vom Unterricht verpasst.
 </p>';
     }
     else if (getMaskedGet('type') == "days") {
