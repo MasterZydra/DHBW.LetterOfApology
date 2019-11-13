@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Entschuldigung Minuten</h2>
-    <form action="apology.php" method="POST">
+    <form action="apology.php" method="GET">
         <input type="hidden"
             name="type" value="minutes">
         <label for="fullname">Vor- und Nachname:</label><br>
