@@ -1,4 +1,17 @@
 <?php
+    /*
+     * Check if all names are found in the URL as GET.
+     * If not, go to start page
+     */
+    function checkParameters($names) {
+        foreach($names as $name) {
+            // Jump to start page if a relevant data is missing
+            if (!isset($_GET[$name])) {
+                header("Location: index.php");
+                exit();
+            }
+        }
+    }
 
 $html = '
 <!DOCTYPE html>
