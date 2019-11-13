@@ -1,3 +1,5 @@
+### this file is used for HTTP Basic Authentication when the user tries to access the admin-portal
+
 AuthType Basic
 AuthName "Admin Portal: Benutzer:admin Passwort:Sicher2019%"
 # Pfad zur .htpasswd-Datei (AuthUserFile) muss eventuell angepasst werden, damit der Webserver diese findet.
