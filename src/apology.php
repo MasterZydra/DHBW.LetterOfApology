@@ -168,10 +168,11 @@ $pdf->writeHTML($content, true, false, true, false, '');
  
 //Ausgabe der PDF
  
-//Variante 1: PDF direkt an den Benutzer senden:
-$pdf->Output($pdfName, 'I');
- 
 //Variante 2: PDF im Verzeichnis abspeichern:
 //$pdf->Output(dirname(__FILE__).'/'.$pdfName, 'F');
 //echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
+    
+//Variante 1: PDF direkt an den Benutzer senden:
+$pdfName = 'test';
+$pdf->Output($pdfName, 'I');
 ?>
