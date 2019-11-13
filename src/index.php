@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    <nav class="navbar">
-        <a class="navbar-title" href="./"><h1>Entschuldigungs-Generator</h1></a>
-    </nav>
+    <?php include("navbar.php") ?>
 
     <div class="container">
         <div class="jumbotron round">
