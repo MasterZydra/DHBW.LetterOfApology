@@ -201,7 +201,9 @@ getMaskedGet('absenceDate') . ' | 1 Tag verpasst
 
 <p>
 ' . $config['salutation'] . ',<br><br>
-hiermit entschuldige ich mich für <strong>' . getDayName(getMaskedGet('absenceDate')) . ', den ' . getMaskedGet('absenceDate') . '</strong>. Ich war an diesem Tag <strong>abwesend</strong>.
+hiermit entschuldige ich mich für <strong>'
+. getDayName(getMaskedGet('absenceDate')) . ', den '
+. getMaskedGet('absenceDate') . '</strong>. Ich war an diesem Tag <strong>abwesend</strong>.
 </p>';
     }
     
