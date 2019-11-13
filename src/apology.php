@@ -116,14 +116,14 @@
 <body>
 <p>
 <span class="underline">'
-    . $_GET['fullname'] . ' - ' . $_GET['street'] . ' - ' . $_GET['postalCode'] . ' ' . $_GET['city'] . '</span><br>
+    . $fullname . ' - ' . getMaskedGet('street') . ' - ' . getMaskedGet('postalCode') . ' ' . getMaskedGet('city') . '</span><br>
 ' . $config['receiver_name'] . '<br>
 ' . $config['receiver_street'] . '<br>
 ' . $config['receiver_postalCode'] . ' ' . $config['receiver_city'] . '<br>
 <table cellpadding="0" cellspacing="0" style="width: 100%; ">
     <tr>
         <td width="75%"></td>
-        <td>' . $config['receiver_city'] . ', ' . $_GET['absenceDate'] . '</td>
+        <td>' . $config['receiver_city'] . ', ' . getMaskedGet('absenceDate') . '</td>
     </tr>
 </table>
 </p>
@@ -149,7 +149,7 @@ Mit freundlichen Grüßen
 
 <p></p>
 '
-. $_GET['fullname'] . '
+. $fullname . '
 </body>
 </html>';
     } else if ($_GET["type"] == "days") {
