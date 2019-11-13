@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Entschuldigungs-Generator</title>
-    <link href="./css/home.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
