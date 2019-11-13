@@ -25,3 +25,10 @@
 .card h3{
     margin: unset;
 }
+
+@media (max-width: 600px){
+    /*lower padding for jumbotron for better looks on small screens*/
+    .jumbotron{
+        padding: 0 1rem 2rem;
+    }
+}
