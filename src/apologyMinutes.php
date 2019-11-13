@@ -20,10 +20,16 @@
             id="street" name="street"
             placeholder="Straße und Hausnummer" required><br>
 
-        <label for="city">PLZ und Stadt</label><br>
+        <label for="postalCode">PLZ</label><br>
+        <input type="text"
+            id="postalCode" name="postalCode"
+            placeholder="PLZ"
+            pattern="[0-9][0-9][0-9][0-9][0-9]" required><br>
+
+        <label for="city">Stadt</label><br>
         <input type="text"
             id="city" name="city"
-            placeholder="PLZ Stadt" required>
+            placeholder="Stadt" required><br>
 
         <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>">
         <input type="time" name="time_from" placeholder="Abwesend von">
