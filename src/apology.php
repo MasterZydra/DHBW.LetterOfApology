@@ -223,33 +223,23 @@ hiermit entschuldige ich mich für <strong>'
     $pdf->SetTitle("Entschuldigung");
     $pdf->SetSubject("Endschuldigung");
  
-    // Header und Footer Informationen
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    // Deactivate Header und Footer
     $pdf->SetPrintHeader(false);
     $pdf->SetPrintFooter(false);
 
-    
-    // Font for document
+    // Use monospaced font
     $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
  
     // Set Margins
     $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
  
-// Automatisches Autobreak der Seiten
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    // Set font and font size
+    $pdf->SetFont('dejavusans', '', 11);
  
-// Image Scale 
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    // Add new page
+    $pdf->AddPage();
  
-// Schriftart
-$pdf->SetFont('dejavusans', '', 10);
- 
-// Neue Seite
-
-$pdf->AddPage();
- 
-// Fügt den HTML Code in das PDF Dokument ein
+    // Add HTML code to page and generate PDF out of it
     $pdf->writeHTML($header . $content . $footer, true, false, true, false, '');
  
 //Ausgabe der PDF
@@ -258,6 +248,6 @@ $pdf->AddPage();
 //$pdf->Output(dirname(__FILE__).'/admin/PDFs/' . $pdfName, 'F');
 //echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
     
-//Variante 1: PDF direkt an den Benutzer senden:
+    // Show PDF to user in browser window
     $pdf->Output($pdfName, 'I');
 ?>
