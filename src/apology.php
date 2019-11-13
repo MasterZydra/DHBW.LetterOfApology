@@ -1,158 +1,125 @@
 <?php
+    /*
+     * Check if all names are found in the URL as GET.
+     * If not, go to start page
+     */
+    function checkParameters($names) {
+        foreach($names as $name) {
+            // Jump to start page if a relevant data is missing
+            if (!isset($_GET[$name])) {
+                header("Location: index.php");
+                exit();
+            }
+        }
+    }
+    
+    /*
+     * Format output of time.
+     * Add leading zero to time if necessary.
+     */
+    function formatTime($time) {
+        // e.g.  1:00 --> len = 4
+        // e.g. 10:00 --> len = 5
+        if (strlen($time) == 4) {
+            // Add leading zero
+            return "0" . $time;
+        }
+        // Else return
+        return $time;
+    }
+    
+    /*
+     * Calculate time difference between to given time stamps
+     */
+    function timeDif($time1, $time2) {
+        // Convert string to DateTime
+        $from = DateTime::createFromFormat('H:i', $time1);
+        $to = DateTime::createFromFormat('H:i', $time2);
+        // Calc dif and get dif in minutes
+        return abs($to->getTimestamp() - $from->getTimestamp()) / 60;
+    }
+    
+    /*
+     * Return day name of a given day.
+     */
+    function getDayName($day) {
+        // Get DateTime from String
+        $day = DateTime::createFromFormat('d.m.Y', $day);
+        // Set to German
+        setlocale(LC_TIME, "de_DE");
+        // Return day name
+        return $day->format('l');
+    }
+    
+    // Arrays with necessary parameters
+    $primaryParams = array("type", "fullname", "street", "postalCode", "city", "explanation");
+    $minutesParams = array("absenceDate", "time_from", "time_to", "typeOfDelay");
+    
+    // Check if primary data are given
+    checkParameters($primaryParams);
+    
+    // Get data from receiver
+    include "config.php";
 
-  // Erstellung des HTML-Codes. Dieser HTML-Code definiert das Aussehen eures PDFs.
-// tcpdf unterstützt recht viele HTML-Befehle. Die Nutzung von CSS ist allerdings
-// stark eingeschränkt.
- /*
-$html = '
-<table cellpadding="5" cellspacing="0" style="width: 100%; ">
-    <tr>
-        <td width="60%">' . nl2br(trim($inv -> invoiceSender)) . '</td>
-        <td width="25%">
-Rechnungsnummer:<br>
-Rechnungsdatum:
-         </td>
-        <td width="15%" style="text-align: right;">
-' . $inv -> invoiceNr . '<br>
-' . $inv -> invoiceDate . '
-         </td>
-     </tr>
-     <tr>
-        <td style="font-size:1.3em; font-weight: bold;">
-            <br><br>
-Rechnung
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">' . nl2br(trim($inv -> invoiceReceiver)) . '</td>
-    </tr>
-</table>
-<br><br><br>
- 
-<table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">
-    <tr style="background-color: #4a8a16; padding:5px; color:white;">
-        <td style="padding:5px;">
-            <b>Lieferschein-Nr</b>
-        </td>
-        <td style="text-align: center;">
-            <b>Lieferdatum</b>
-        </td>
-        <td style="text-align: center;">
-            <b>Menge</b>
-        </td>
-        <td style="text-align: center;">
-            <b>Preis</b>
-        </td>
-    </tr>';
-
-// Add items
-$totalAmount = 0;
-foreach($invoiceItems as $item) {
-    // Calculate price
-    $price = $item[3] * $item[2];
-    $totalAmount += $price;
-    $html .= '
-        <tr>
-            <td style="text-align: center;">' . $item[0].  '</td>
-            <td style="text-align: center;">' . $item[1] . '</td>
-            <td style="text-align: right;">' . $item[2] . ' ' . $inv -> volumeUnit . '</td>
-            <td style="text-align: center;">' . number_format($price, 2, ',', '') . ' Euro</td>
-        </tr>';
-}
-$html .="</table>";
-
-$html .= '
-<hr>
-<table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">';
-if($umsatzsteuer > 0) {
- $netto = $totalAmount / (1+$umsatzsteuer);
- $umsatzsteuer_betrag = $totalAmount - $netto;
- 
- $html .= '
- <tr>
- <td colspan="3">Zwischensumme (Netto)</td>
- <td style="text-align: center;">'.number_format($netto , 2, ',', '').' Euro</td>
- </tr>
- <tr>
- <td colspan="3">Umsatzsteuer ('.intval($umsatzsteuer*100).'%)</td>
- <td style="text-align: center;">'.number_format($umsatzsteuer_betrag, 2, ',', '').' Euro</td>
- </tr>';
-}
- 
-$html .='
-            <tr>
-                <td colspan="3"><b>Gesamtbetrag: </b></td>
-                <td style="text-align: center;"><b>'.number_format($totalAmount, 2, ',', '').' Euro</b></td>
-            </tr> 
-        </table>
-<br><br><br>';
-/*
-if(isset($comment) {
- $html .= $comment;
-}*/
-/*
-// Bankverbindung
-$html .= "<strong>Bankverbindung</strong>:"
-. "<br>" . $inv -> bankDetails_name
-. "<br>IBAN: " . $inv -> bankDetails_IBAN
-. "<br>BIC: " . $inv -> bankDetails_BIC;
- 
- */
-
-$html = '
+    if ($_GET["type"] == "minutes") {
+        // Check if minute data are given
+        checkParameters($minutesParams);
+        // Important: No indentation in the contents, as these cause indentations in the output
+        $content = '
 <!DOCTYPE html>
 <html lang="DE">
 <head>
     <meta charset="UTF-8">
+    <title>Entschuldigung für Abwesenheit</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .underline {
             text-decoration: underline;
         }
-
-        .alignRight {
-            float: right;
-        }
     </style>
 </head>
 <body>
-<?php
-    include "config.php";
-?>
 <p>
-<span class="underline">Vorname Nachname - Straße 1 - 12345 Stadt</span><br>
-Akademi<br>
-Stra0e<br>
-65432 Stadt<br>
-<span class="alignRight">Stadt, 14.10.2019</span>
+<span class="underline">'
+    . $_GET['fullname'] . ' - ' . $_GET['street'] . ' - ' . $_GET['postalCode'] . ' ' . $_GET['city'] . '</span><br>
+' . $config['receiver_name'] . '<br>
+' . $config['receiver_street'] . '<br>
+' . $config['receiver_postalCode'] . ' ' . $config['receiver_city'] . '<br>
+<table cellpadding="0" cellspacing="0" style="width: 100%; ">
+    <tr>
+        <td width="75%"></td>
+        <td>' . $config['receiver_city'] . ', ' . $_GET['absenceDate'] . '</td>
+    </tr>
+</table>
 </p>
-
-<br><br><br><br><br>
+    
+<p></p>
 
 <p>
 <strong>Entschuldigung für Abwesenheit</strong><br>
-14.10.19 | Von 11.45 Uhr bis 11:50 Uhr abwesend | 5 Minuten verpasst
+' . $_GET['absenceDate'] . ' | Von ' . formatTime($_GET['time_from']) . ' Uhr bis ' . formatTime($_GET['time_to']) . ' Uhr abwesend | ' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten verpasst
 </p>
 
-<br><br><br><br>
-
+<p></p>
+/// --> Wochentag
 <p>
-Sehr geehrter Herr Mustermann,<br><br>
-hiermit entschuldige ich mich für Montag, den 14.10.2019. Ich habe mich verspätet. / Ich bin früher gegangen. / Ich bin später gekommen. Ich war zwischen 11:45 Uhr und 11:50 Uhr abwesend und habe dadurch 5 Minuten vom Unterricht verpasst.<br><br>
-Grund: Ich habe die Zeit vergessen. / Ich hatte Bauchschmerzen. / Ich hatte private Gründe.
+' . $config['salutation'] . ',<br><br>
+hiermit entschuldige ich mich für <strong>' . getDayName($_GET['absenceDate']) . ', den ' . $_GET['absenceDate'] . '</strong>. ' . $_GET['typeOfDelay'] . '. Ich war zwischen <strong>' . formatTime($_GET['time_from']) . ' und ' . formatTime($_GET['time_to']) . ' Uhr abwesend</strong> und habe dadurch <strong>' . timeDif($_GET['time_from'], $_GET['time_to']) . ' Minuten</strong> vom Unterricht verpasst.<br><br>
+Grund: ' . htmlspecialchars ($_GET['explanation']) . '
 </p>
 
-<br><br>
+<p></p>
 
 Mit freundlichen Grüßen
 
-<br><br><br>
-
-Max Mustermann
-
+<p></p>
+'
+. $_GET['fullname'] . '
 </body>
 </html>';
+    } else if ($_GET["type"] == "days") {
+        // TODO: --> Check für Tage
+    }
  
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -192,17 +159,20 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('dejavusans', '', 10);
  
 // Neue Seite
+$pdf->SetPrintHeader(false);
+$pdf->SetPrintFooter(false);
 $pdf->AddPage();
  
 // Fügt den HTML Code in das PDF Dokument ein
-$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->writeHTML($content, true, false, true, false, '');
  
 //Ausgabe der PDF
- 
-//Variante 1: PDF direkt an den Benutzer senden:
-$pdf->Output($pdfName, 'I');
  
 //Variante 2: PDF im Verzeichnis abspeichern:
 //$pdf->Output(dirname(__FILE__).'/'.$pdfName, 'F');
 //echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
+    
+//Variante 1: PDF direkt an den Benutzer senden:
+$pdfName = 'test';
+$pdf->Output($pdfName, 'I');
 ?>
