@@ -78,8 +78,12 @@
     }
     
     // Arrays with necessary parameters
-    $primaryParams = array("type", "firstname", "lastname", "street", "postalCode", "city", "explanation", "absenceDate");
-    $minutesParams = array("time_from", "time_to", "typeOfDelay");
+    $primaryParams = [
+        "type", "firstname", "lastname",
+        "street", "postalCode", "city",
+        "explanation", "absenceDate"];
+    $minutesParams = [
+        "time_from", "time_to", "typeOfDelay"];
     
     // Check if primary data are given
     checkParameters($primaryParams);
