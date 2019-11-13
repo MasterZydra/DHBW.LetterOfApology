@@ -186,30 +186,34 @@ hiermit entschuldige ich mich für <strong>' . getDayName(getMaskedGet('absenceD
 </p>';
     }
     
+    // PDF generation
+    // ---------------------------------------------------
+ 
     // Create PDF document
     // Load library
     require_once('ext/TCPDF/tcpdf.php');
 
+    // Create new TCPDF object
     $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
  
     // Document informations
     $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor($_GET['fullname']);//$inv -> pdfAuthor);
-$pdf->SetTitle("Entschuldigung");//$inv -> getInvoiceName());
-$pdf->SetSubject("Endschuldigung");//$inv -> getInvoiceName());
+    $pdf->SetAuthor($fullname);
+    $pdf->SetTitle("Entschuldigung");
+    $pdf->SetSubject("Endschuldigung");
  
+    // Header und Footer Informationen
+    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    $pdf->SetPrintHeader(false);
+    $pdf->SetPrintFooter(false);
+
+    
+    // Font for document
+    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
  
-// Header und Footer Informationen
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
- 
-// Auswahl des Font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
- 
-// Auswahl der MArgins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    // Set Margins
+    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
  
 // Automatisches Autobreak der Seiten
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -221,20 +225,18 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('dejavusans', '', 10);
  
 // Neue Seite
-$pdf->SetPrintHeader(false);
-$pdf->SetPrintFooter(false);
+
 $pdf->AddPage();
  
 // Fügt den HTML Code in das PDF Dokument ein
-$pdf->writeHTML($content, true, false, true, false, '');
+    $pdf->writeHTML($header . $content . $footer, true, false, true, false, '');
  
 //Ausgabe der PDF
  
 //Variante 2: PDF im Verzeichnis abspeichern:
-//$pdf->Output(dirname(__FILE__).'/'.$pdfName, 'F');
+//$pdf->Output(dirname(__FILE__).'/admin/PDFs/' . $pdfName, 'F');
 //echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
     
 //Variante 1: PDF direkt an den Benutzer senden:
-$pdfName = 'test';
-$pdf->Output($pdfName, 'I');
+    $pdf->Output($pdfName, 'I');
 ?>
