@@ -57,6 +57,9 @@
     
     // Check if primary data are given
     checkParameters($primaryParams);
+    
+    // Get data from receiver
+    include "config.php";
 
 $html = '
 <!DOCTYPE html>
@@ -75,9 +78,6 @@ $html = '
     </style>
 </head>
 <body>
-<?php
-    include "config.php";
-?>
 <p>
 <span class="underline">Vorname Nachname - Straße 1 - 12345 Stadt</span><br>
 Akademi<br>
