@@ -3,7 +3,7 @@
         <label for="firstname">Vorname:</label>
         <input type="text"
                id="firstname" name="firstname"
-               placeholder="Vorname" required>
+               placeholder="Vorname" required autofocus>
     </div>
     <div class="col-2 input-field">
         <label for="lastname">Nachname:</label>
