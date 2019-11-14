@@ -1,0 +1,13 @@
+a {
+    padding-left: 1.7em;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+a[href$=".pdf"] {
+    background-image: url(img/pdf.png);
+}
+
+a[href^="?folder"] {
+    background-image: url(img/folder.png);
+}
