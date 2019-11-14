@@ -19,3 +19,10 @@ Um das Admin-Passwort zu ändern, muss folgendes in die Windows Konsole eingegeb
 ```
 C:\xampp\apache\bin>htpasswd.exe -c C:\xampp\htdocs\DHBW.LetterOfApology\.htpasswd admin
 ```
+
+## Warnung beim Anzeigen des PDFs
+```
+PHP kann keinen Ordner anlegen oder PDF im Verzeichnis ablegen.
+Bitte informieren Sie Ihren Administrator.
+```
+Wenn beim Aufruf des Formulars die obige Meldung angezeigt wird, sind die Berechtigungen für den Ordner `admin/PDFs` nicht richtig gesetzt. Der Webserver benötigt hier **Schreib-** und **Leserechte**.
