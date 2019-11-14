@@ -10,7 +10,7 @@
     <?php include("navbar.php") ?>
     <div class="container">
         <h2>Entschuldigung Tage</h2>
-        <form action="apology.php" method="POST">
+        <form action="apology.php" method="GET">
             <input type="hidden"
                 name="type" value="days">
 
