@@ -242,11 +242,17 @@ hiermit entschuldige ich mich für <strong>'
     // Add HTML code to page and generate PDF out of it
     $pdf->writeHTML($header . $content . $footer, true, false, true, false, '');
  
-//Ausgabe der PDF
- 
-//Variante 2: PDF im Verzeichnis abspeichern:
-//$pdf->Output(dirname(__FILE__).'/admin/PDFs/' . $pdfName, 'F');
-//echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
+    // --- Save PDF for admin ---
+    // Switch last and firstname for folder name
+    $fullname =  getMaskedGet('lastname') . ' ' . getMaskedGet('firstname');
+    $filePath = './admin/PDFs/' . $fullname;
+    // Check if directory for user exists
+    if (!is_dir($filePath)) {
+        // Create a new directory for user
+        mkdir($filePath, 0777, true);
+    }
+    // Write file to file system. Overwrite file with old name if necessary.
+    $pdf->Output(dirname(__FILE__). '/admin/PDFs/' . $fullname . '/' . $pdfName, 'F');
     
     // Show PDF to user in browser window
     $pdf->Output($pdfName, 'I');
