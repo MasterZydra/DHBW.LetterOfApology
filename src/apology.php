@@ -246,6 +246,14 @@ hiermit entschuldige ich mich für <strong>'
     // Switch last and firstname for folder name
     $fullname =  getMaskedGet('lastname') . ' ' . getMaskedGet('firstname');
     $filePath = './admin/PDFs/' . $fullname;
+    // Check if permissions for PDF directory are correctly set.
+    // Directory needs to be writeable for PHP.
+    if (!is_writable('./admin/PDFs/')) {
+        # Show message for user to inform admin.
+        echo "PHP kann keinen Ordner anlegen oder PDF im Verzeichnis ablegen.<br>";
+        echo "Bitte informieren Sie Ihren Administrator.";
+        return;
+    }
     // Check if directory for user exists
     if (!is_dir($filePath)) {
         // Create a new directory for user
