@@ -87,6 +87,8 @@
         "explanation", "absenceDate"];
     $minutesParams = [
         "time_from", "time_to", "typeOfDelay"];
+    $daysParams = [
+        "missingDays"];
     
     // Check if primary data are given
     checkParameters($primaryParams);
@@ -191,10 +193,12 @@ hiermit entschuldige ich mich für <strong>'
 </p>';
     }
     else if (getMaskedGet('type') == "days") {
+        // Check if minute data are given
+        checkParameters($daysParams);
         // Important: No indentation in the contents,
         // as these cause indentations in the output
         $content =
-getMaskedGet('absenceDate') . ' | 1 Tag verpasst
+getMaskedGet('absenceDate') . ' | ' . getMaskedGet('missingDays') . ' Tag verpasst
 </p>
 
 <p></p>

@@ -10,7 +10,7 @@
     <?php include("navbar.php") ?>
     <div class="container">
         <h2>Entschuldigung Tage</h2>
-        <form action="apology.php" method="POST">
+        <form action="apology.php" method="GET">
             <input type="hidden"
                 name="type" value="days">
 
@@ -20,13 +20,14 @@
             <div class="row">
                 <div class="col-2 input-field">
                     <label for="absenceDate">Abwesend von: </label>
-                    <input type="date" id="absenceDate" name="absenceDate" value="<?php echo date(d.m.Y); ?>" >
+                    <input type="date" id="absenceDate" name="absenceDate" value="<?php echo date('d.m.Y'); ?>" >
                 </div>
 
                 <div class="col-2 input-field">
                     <label for="missingDays">Anzahl der Abwesenden Tage: </label>
                     <input type="number"
                            id="missingDays" name="missingDays"
+                           value="1"
                            placeholder="Anzahl der Abwesenden Tage" required>
                 </div>
             </div>
