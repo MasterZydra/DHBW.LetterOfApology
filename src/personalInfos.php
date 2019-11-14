@@ -1,11 +1,11 @@
-<div class="name">
-    <div class="test">
+<div class="row">
+    <div class="col-2 input-field">
         <label for="firstname">Vorname:</label>
         <input type="text"
                id="firstname" name="firstname"
                placeholder="Vorname" required>
     </div>
-    <div class="test">
+    <div class="col-2 input-field">
         <label for="name">Nachname:</label>
         <input type="text"
                id="name" name="name"
@@ -26,17 +26,19 @@
            id="street" name="street"
            placeholder="Straße und Hausnummer" required><br>
 
-    <div class="test">
-        <label for="postalcode">PLZ:</label>
-        <input type="text"
-               id="postalCode" name="postalCode"
-               placeholder="PLZ" required>
-    </div>
+    <div class="row">
+        <div class="col-2 input-field">
+            <label for="postalcode">PLZ:</label>
+            <input type="text"
+                   id="postalCode" name="postalCode"
+                   placeholder="PLZ" required>
+        </div>
 
-    <div class="test">
-        <label for="city">Stadt:</label>
-        <input type="text"
-               id="city" name="city"
-               placeholder="Stadt" required>
+        <div class="col-2 input-field">
+            <label for="city">Stadt:</label>
+            <input type="text"
+                   id="city" name="city"
+                   placeholder="Stadt" required>
+        </div>
     </div>
 </div>

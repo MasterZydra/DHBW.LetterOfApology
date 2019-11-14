@@ -4,11 +4,8 @@ input {
     border-radius: 5px;
     padding: 5px;
     margin: 2px 0px 5px;
-}
-
-form {
-    width: 70%;
-    min-width: 400px;
+    height: 2rem;
+    box-sizing: border-box;
 }
 
 .test {

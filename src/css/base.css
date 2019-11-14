@@ -63,11 +63,11 @@ a{
 .row .col-2{
     width: 100%;
 }
-/*add equal space between each column, when next to each other*/
-.col-2:nth-child(odd) {
+/*add equal space between each column, when next to each other, but exclude input-fields*/
+.col-2:not(.input-field):nth-child(odd) {
     margin-right: 1rem;
 }
-.col-2:nth-child(even) {
+.col-2:not(.input-field):nth-child(even) {
     margin-left: 1rem;
 }
 
@@ -90,11 +90,11 @@ a{
         width: unset;
     }
     /*remove left/right margin from columns and add top/bottom margin, since the columns breaked in a new line*/
-    .col-2:nth-child(odd) {
+    .col-2:not(.input-field):nth-child(odd) {
         margin-right: unset;
         margin-bottom: 1rem;
     }
-    .col-2:nth-child(even) {
+    .col-2:not(.input-field):nth-child(even) {
         margin-left: unset;
         margin-top: 1rem;
     }

@@ -16,17 +16,19 @@
 
             <?php include("personalInfos.php") ?>
             <hr>
-            
-            <div class="test">
-                <label for="absenceDate">Abwesend von: </label>
-                <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>" >
-            </div>
-            
-            <div class="test">
-                <label for="missingDays">Anzahl der Abwesenden Tage: </label>
-                <input type="number"
-                    id="missingDays" name="missingDays"
-                    placeholder="Anzahl der Abwesenden Tage" required>
+
+            <div class="row">
+                <div class="col-2 input-field">
+                    <label for="absenceDate">Abwesend von: </label>
+                    <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>" >
+                </div>
+
+                <div class="col-2 input-field">
+                    <label for="missingDays">Anzahl der Abwesenden Tage: </label>
+                    <input type="number"
+                           id="missingDays" name="missingDays"
+                           placeholder="Anzahl der Abwesenden Tage" required>
+                </div>
             </div>
             <br>
             <label for="explanation">Grund: </label><br>
