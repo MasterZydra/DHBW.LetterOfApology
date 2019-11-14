@@ -16,11 +16,14 @@ a{
     /*set offset from above and center it automatically*/
     margin: 4rem auto auto;
 }
-/*set appearance of "buttons"*/
+/*set appearance of "buttons", either realised with <a> or <button>*/
 .button{
     background-color: royalblue;
     color: white;
     padding: .5rem;
+    border: none;
+    cursor: pointer;
+    font: inherit;
 }
 /*default class to make things rooouuund */
 .round{
