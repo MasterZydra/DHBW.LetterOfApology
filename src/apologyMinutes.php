@@ -22,17 +22,23 @@
                 placeholder="z.B. 11.11.2019"
                 value="<?php echo date('d.m.Y'); ?>" required><br>
 
-            <label for="time_from">Abwesend von:</label><br>
-            <input type="time"
-                id="time_from" name="time_from"
-                placeholder="z.B. 8:00, 16:05"
-                pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required><br>
+            <div class="row">
+                <div class="col-2 input-field">
+                    <label for="time_from">Abwesend von:</label>
+                    <input type="time"
+                        id="time_from" name="time_from"
+                        placeholder="z.B. 8:00, 16:05"
+                        pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required>
+                </div>
 
-            <label for="time_to">Abwesend bis:</label><br>
-            <input type="time"
-                id="time_to" name="time_to"
-                placeholder="z.B. 8:00, 16:05"
-                pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required><br>
+                <div class="col-2 input-field">
+                    <label for="time_to">Abwesend bis:</label>
+                    <input type="time"
+                        id="time_to" name="time_to"
+                        placeholder="z.B. 8:00, 16:05"
+                        pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required>
+                </div>
+            </div>
 
             <label for="explanation">Grund:</label><br>
             <input type="text"
