@@ -1,0 +1,20 @@
+input {
+    width: 100%;
+    border: 2px solid #bbb;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px 0px 5px;
+}
+
+form {
+    width: 70%;
+    min-width: 400px;
+}
+
+.test {
+    display: inline-grid;
+    width: 45%;
+    margin-right: 4%;
+}
+
+
