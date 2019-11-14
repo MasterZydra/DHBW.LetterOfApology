@@ -27,6 +27,7 @@
                     <label for="missingDays">Anzahl der Abwesenden Tage: </label>
                     <input type="number"
                            id="missingDays" name="missingDays"
+                           value="1"
                            placeholder="Anzahl der Abwesenden Tage" required>
                 </div>
             </div>
