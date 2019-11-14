@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-2 input-field">
-            <label for="postalcode">PLZ:</label>
+            <label for="postalCode">PLZ:</label>
             <input type="text"
                    id="postalCode" name="postalCode"
                    placeholder="PLZ" required>

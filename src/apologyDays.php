@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-2 input-field">
                     <label for="absenceDate">Abwesend von: </label>
-                    <input type="date" name="absenceDate" value="<?php echo date(d.m.Y); ?>" >
+                    <input type="date" id="absenceDate" name="absenceDate" value="<?php echo date(d.m.Y); ?>" >
                 </div>
 
                 <div class="col-2 input-field">
