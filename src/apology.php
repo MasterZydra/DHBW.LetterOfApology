@@ -198,7 +198,7 @@ hiermit entschuldige ich mich für <strong>'
         // Important: No indentation in the contents,
         // as these cause indentations in the output
         $content =
-getMaskedGet('absenceDate') . ' | 1 Tag verpasst
+getMaskedGet('absenceDate') . ' | ' . getMaskedGet('missingDays') . ' Tag verpasst
 </p>
 
 <p></p>
