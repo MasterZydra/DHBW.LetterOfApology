@@ -21,7 +21,7 @@
                 <div class="col-2 card round">
                     <h3 class="card-title">(mehrere) Tage</h3>
                     <p>Du hast gleich ein Tag oder sogar mehrere gefehlt?</p>
-                    <a href="./index.php" class="button round">klick hier!</a>
+                    <a href="./apologyDays.php" class="button round">klick hier!</a>
                 </div>
                 <div class="col-2 card round">
                     <h3 class="card-title">Stunden/Minuten</h3>
