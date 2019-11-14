@@ -52,7 +52,7 @@
                 <option value="Ich bin <strong>später gekommen</strong>">Ich bin <strong>später gekommen</strong></option>
             </select><br>
 
-            <button>Erstellen</button>
+            <button class="button round">Erstellen</button>
         </form>
     </div>
 </body>
