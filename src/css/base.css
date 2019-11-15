@@ -58,10 +58,11 @@ a{
 /*** rows ***/
 .row{
     display: flex;
+    justify-content: space-between;
 }
 /*for two columns in one row: to equalize size of columns in this row*/
 .row .col-2{
-    width: 100%;
+    width: 49%;
 }
 /*add equal space between each column, when next to each other, but exclude input-fields*/
 .col-2:not(.input-field):nth-child(odd) {
