@@ -7,7 +7,11 @@
         <link href="../css/base.css" rel="stylesheet">
     </head>
     <body>
-        <?php include("../navbar.php") ?>
+<?php
+    // Set variable level to go one level up to index.php
+    $level = 1;
+    include("../navbar.php");
+?>
         <div class="container content">
 
             <?php 
