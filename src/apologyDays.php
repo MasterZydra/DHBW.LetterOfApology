@@ -39,7 +39,5 @@
             <button class="button round">Erstellen</button>
           </form>
     </div>
-    
-    
 </body>
 </html>

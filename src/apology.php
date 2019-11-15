@@ -1,5 +1,5 @@
 <?php
-    // Erstellt von 6439456
+    // Created by 6439456
     
     /*
      * Check if all names are found in the URL as GET.
