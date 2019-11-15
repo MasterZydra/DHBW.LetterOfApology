@@ -20,7 +20,7 @@
             <input type="date"
                 id="absenceDate" name="absenceDate"
                 placeholder="z.B. 11.11.2019"
-                value="<?php echo date('d.m.Y'); ?>" required><br>
+                value="<?php echo date('Y-m-d'); ?>" required><br>
 
             <div class="row">
                 <div class="col-2 input-field">
