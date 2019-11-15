@@ -20,7 +20,7 @@
 <nav class="navbar">
     <div class="container">
         <div>
-            <a class="navbar-title" href=".<?php echo getBackPath($level); ?>/"><h1>Entschuldigungs-Generator</h1></a>
+            <a class="navbar-title" href=".<?php echo isset($level) ? getBackPath($level) : ""; ?>/"><h1>Entschuldigungs-Generator</h1></a>
         </div>
         <div>
             <a class="button round admin-button" href="admin/">Admin</a>
