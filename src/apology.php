@@ -149,7 +149,7 @@
 <table cellpadding="0" cellspacing="0" style="width: 100%;">
     <tr>
         <td width="75%"></td>
-        <td>' . $config['receiver_city'] . ', ' . formatDate(getMaskedGet('absenceDate')) . '</td>
+    <td>' . $config['receiver_city'] . ', ' . date('d.m.Y') . '</td>
     </tr>
 </table>
 </p>
