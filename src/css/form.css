@@ -15,4 +15,9 @@ select {
     margin-right: 4%;
 }
 
-
+.input-group{
+    margin: 2rem 0;
+}
+.input-group-caption{
+    margin-bottom: .5rem;
+}
