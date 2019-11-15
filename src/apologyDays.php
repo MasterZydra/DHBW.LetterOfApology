@@ -24,11 +24,11 @@
                 </div>
 
                 <div class="col-2 input-field">
-                    <label for="missingDays">Anzahl der Abwesenden Tage: </label>
+                    <label for="missingDays">Anzahl der abwesenden Tage: </label>
                     <input type="number"
                            id="missingDays" name="missingDays"
                            value="1"
-                           placeholder="Anzahl der Abwesenden Tage" required>
+                           placeholder="Anzahl der abwesenden Tage" required>
                 </div>
             </div>
             <br>
