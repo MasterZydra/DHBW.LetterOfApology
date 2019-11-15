@@ -19,24 +19,32 @@
             <label for="absenceDate">Abwesenheitsdatum:</label><br>
             <input type="date"
                 id="absenceDate" name="absenceDate"
-                placeholder="z.B. 11.11.2019"
                 value="<?php echo date('Y-m-d'); ?>" required><br>
 
             <div class="row">
                 <div class="col-2 input-field">
-                    <label for="time_from">Abwesend von:</label>
+                    <label for="time_from">Abwesend von (z.B. 12:05):</label>
                     <input type="time"
                         id="time_from" name="time_from"
-                        placeholder="z.B. 8:00, 16:05"
-                        pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required>
+<?php
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if (stripos($user_agent, 'Safari')) {
+        echo 'pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]"';
+    }
+?>
+                         required>
                 </div>
 
                 <div class="col-2 input-field">
-                    <label for="time_to">Abwesend bis:</label>
+                    <label for="time_to">Abwesend bis (z.B. 12:05):</label>
                     <input type="time"
                         id="time_to" name="time_to"
-                        placeholder="z.B. 8:00, 16:05"
-                        pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]" required>
+<?php
+    if (stripos($user_agent, 'Safari')) {
+        echo 'pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]"';
+    }
+?>
+                         required>
                 </div>
             </div>
 
