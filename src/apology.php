@@ -45,12 +45,19 @@
      * Return day name of a given day.
      */
     function getDayName($day) {
+        // Array to translate short day name into long German day name
+        $dayNameDE = [
+            "Mon" => "Montag",
+            "Tue" => "Dienstag",
+            "Wed" => "Mittwoch",
+            "Thu" => "Donnerstag",
+            "Fri" => "Freitag",
+            "Sat" => "Samstag",
+            "Sun" => "Sonntag"];
         // Get DateTime from String
         $day = DateTime::createFromFormat('Y-m-d', $day);
-        // Set to German
-        setlocale(LC_TIME, "de_DE");
         // Return day name
-        return $day->format('l');
+        return $dayNameDE[$day->format('D')];
     }
     
     /*
