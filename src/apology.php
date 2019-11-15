@@ -68,7 +68,7 @@
      */
     function getFileName($date) {
         // Add date to file name
-        $file = formatDate($date) . " ";
+        $file = $date . " ";
         // Add type of apology
         if (getMaskedGet('type') == "minutes") {
             // Add time to file name
