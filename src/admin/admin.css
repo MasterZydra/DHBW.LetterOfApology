@@ -4,12 +4,21 @@
     background-size: contain;
 }
 
+.list {
+    margin: 1rem 0;
+}
+
 a[href$=".pdf"] {
     background-image: url(img/pdf.png);
 }
 
 a[href^="?folder"] {
     background-image: url(img/folder.png);
+}
+
+th form{
+    display: inline;
+    margin-left: 1rem;
 }
 
 /* Dark mode */
