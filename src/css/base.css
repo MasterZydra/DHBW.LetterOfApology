@@ -106,3 +106,21 @@ a{
         width: 90%;
     }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    /* Set font color white and background to grey */
+    body {
+        color: white;
+        background-color: #555555; /* Grey */
+    }
+
+    /* Set background color for input fields to dark grey
+    * and font color to white
+    */
+    input,
+    select {
+        background-color: #383838; /* Dark grey */
+        color: white;
+    }
+}
