@@ -17,9 +17,12 @@
             
             if(isset($_GET["folder"])) {
                 $directory .= $_GET["folder"];
-                echo "<a href='./'><button class='button round'>Zurück</button></a>";
+                $backUrl = "./";
+            } else{
+                $backUrl = "../";
             }
-        
+            echo "<a href='$backUrl'><button class='button round'>Zurück</button></a>";
+
             echo "<form method='get'>";
             
             if(isset($_GET["folder"])) {
