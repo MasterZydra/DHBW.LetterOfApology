@@ -54,13 +54,21 @@
     }
     
     /*
-     * Generate file name from given date and type
+     * Format the date to German format
      */
-    function getFileName($date) {
+    function formatDate($date) {
         // Get DateTime from String
         $day = DateTime::createFromFormat('Y-m-d', $date);
         // Add date to file name
-        $file = $day->format('Y-m-d') . " Entschuldigung ";
+        return $day->format('d.m.Y');
+    }
+    
+    /*
+     * Generate file name from given date and type
+     */
+    function getFileName($date) {
+        // Add date to file name
+        $file = formatDate($date) . " Entschuldigung ";
         // Add type of apology
         if (getMaskedGet('type') == "minutes") {
             $file .= "Minuten";
@@ -132,7 +140,7 @@
 <table cellpadding="0" cellspacing="0" style="width: 100%;">
     <tr>
         <td width="75%"></td>
-        <td>' . $config['receiver_city'] . ', ' . getMaskedGet('absenceDate') . '</td>
+        <td>' . $config['receiver_city'] . ', ' . formatDate(getMaskedGet('absenceDate')) . '</td>
     </tr>
 </table>
 </p>
@@ -172,7 +180,7 @@ Mit freundlichen Grüßen
         // Important: No indentation in the contents,
         // as these cause indentations in the output
         $content =
-getMaskedGet('absenceDate') . ' | Von ' . formatTime(getMaskedGet('time_from'))
+formatDate(getMaskedGet('absenceDate')) . ' | Von ' . formatTime(getMaskedGet('time_from'))
 . ' Uhr bis ' . formatTime(getMaskedGet('time_to')) . ' Uhr abwesend | '
 . timeDif(getMaskedGet('time_from'), getMaskedGet('time_to'))
 . ' Minuten verpasst
@@ -184,7 +192,7 @@ getMaskedGet('absenceDate') . ' | Von ' . formatTime(getMaskedGet('time_from'))
 ' . $config['salutation'] . ',<br><br>
 hiermit entschuldige ich mich für <strong>'
 . getDayName(getMaskedGet('absenceDate')) . ', den '
-. getMaskedGet('absenceDate') . '</strong>. ' . $_GET['typeOfDelay']
+. formatDate(getMaskedGet('absenceDate')) . '</strong>. ' . $_GET['typeOfDelay']
 . '. Ich war zwischen <strong>' . formatTime(getMaskedGet('time_from'))
 . ' und ' . formatTime(getMaskedGet('time_to'))
 . ' Uhr abwesend</strong> und habe dadurch <strong>'
@@ -198,7 +206,7 @@ hiermit entschuldige ich mich für <strong>'
         // Important: No indentation in the contents,
         // as these cause indentations in the output
         $content =
-getMaskedGet('absenceDate') . ' | ' . getMaskedGet('missingDays') . ' Tag verpasst
+formatDate(getMaskedGet('absenceDate')) . ' | ' . getMaskedGet('missingDays') . ' Tag verpasst
 </p>
 
 <p></p>
@@ -207,7 +215,7 @@ getMaskedGet('absenceDate') . ' | ' . getMaskedGet('missingDays') . ' Tag verpas
 ' . $config['salutation'] . ',<br><br>
 hiermit entschuldige ich mich für <strong>'
 . getDayName(getMaskedGet('absenceDate')) . ', den '
-. getMaskedGet('absenceDate') . '</strong>. Ich war an diesem Tag <strong>abwesend</strong>.
+. formatDate(getMaskedGet('absenceDate')) . '</strong>. Ich war an diesem Tag <strong>abwesend</strong>.
 </p>';
     }
     
