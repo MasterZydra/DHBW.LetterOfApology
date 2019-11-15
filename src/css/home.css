@@ -42,12 +42,15 @@
     *  and set font color to white.
     */
     .card{
-        background-color: #383838; /* Dark grey */
+        background-color: #545454;
         color: white;
+    }
+    .jumbotron{
+        background-color: #373737;
     }
 
     /* Set font color to black */
-    .jumbotron{
-        color: black;
-    }
+    /*.jumbotron{*/
+    /*    color: black;*/
+    /*}*/
 }
