@@ -15,6 +15,7 @@
 
             if(isset($_GET["folder"])) {
                 $directory .= $_GET["folder"];
+                echo "<a href='./'><button class='button round'>Zurück</button></a><br>";
             }
 
             $directoryHandle = dir($directory);

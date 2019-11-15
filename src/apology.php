@@ -68,12 +68,14 @@
      */
     function getFileName($date) {
         // Add date to file name
-        $file = formatDate($date) . " Entschuldigung ";
+        $file = formatDate($date) . " ";
         // Add type of apology
         if (getMaskedGet('type') == "minutes") {
-            $file .= "Minuten";
+            // Add time to file name
+            $file .= str_replace(":", "", formatTime(getMaskedGet('time_from')));
+            $file .= " Entschuldigung Minuten";
         } else if (getMaskedGet('type') == "days") {
-            $file .= "Tage";
+            $file .= "Entschuldigung Tage";
         }
         // Return file name with extension
         return $file  . '.pdf';
