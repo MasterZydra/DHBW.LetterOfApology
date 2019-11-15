@@ -11,3 +11,13 @@ a[href$=".pdf"] {
 a[href^="?folder"] {
     background-image: url(img/folder.png);
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    /* Set background color to dark grey
+    *  and set font color to white.
+    */
+    body div a {
+        color: white;
+    }
+}
