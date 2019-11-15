@@ -13,7 +13,7 @@
             <?php 
             $directory = "PDFs/";
             
-            echo "<div class='row'>";
+            echo "<div class='button-row'>";
             
             if(isset($_GET["folder"])) {
                 $directory .= $_GET["folder"];

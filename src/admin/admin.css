@@ -12,6 +12,11 @@ a[href^="?folder"] {
     background-image: url(img/folder.png);
 }
 
+.button-row{
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
     /* Set background color to dark grey
