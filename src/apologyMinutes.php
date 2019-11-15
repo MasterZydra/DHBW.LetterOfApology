@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php include("navbar.php") ?>
-    <div class="container">
+    <div class="container content">
         <h2>Entschuldigung Minuten</h2>
         <form action="apology.php" method="GET">
             <input type="hidden"

@@ -8,7 +8,7 @@
     </head>
     <body>
         <?php include("../navbar.php") ?>
-        <div class="container">
+        <div class="container content">
 
             <?php 
             $directory = "PDFs/";
@@ -71,7 +71,7 @@
                     asort($folders);
                 }
                 foreach($folders as $folder) {
-                    echo "<a href='?folder=$folder'>$folder</a><br>";
+                    echo "<a class='list-item' href='?folder=$folder'>$folder</a><br>";
                 }
             }
             else {
@@ -82,7 +82,7 @@
                     asort($files);
                 }
                 foreach($files as $file) {
-                    echo "<a href='$directory/$file' target='_blank'>$file</a><br>";
+                    echo "<a class='list-item' href='$directory/$file' target='_blank'>$file</a><br>";
                 }
             }
 
