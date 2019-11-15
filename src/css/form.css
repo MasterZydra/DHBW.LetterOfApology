@@ -1,18 +1,33 @@
+/*** input and selects ***/
 input,
 select {
+    /*basic measurements of inputs*/
     width: 100%;
-    border: 2px solid #bbb;
-    border-radius: 5px;
+    height: 2.5rem;
     padding: 5px;
     margin: 2px 0px 5px;
-    height: 2rem;
+    /*set a border around inputs*/
+    border: 2px solid #bbb;
+    border-radius: 5px;
+    /*add box sizing to not exceed parent in width*/
     box-sizing: border-box;
 }
-
-.test {
-    display: inline-grid;
-    width: 45%;
-    margin-right: 4%;
+.input-group{
+    /*add margin under each input-group*/
+    margin: 2rem 0;
+}
+.input-group-caption{
+    /*remove default margin-bottom from input-group-caption (h4)*/
+    margin-bottom: .5rem;
 }
 
-
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    /*Set background color for input fields to dark grey and font color to white and remove borders*/
+    input,
+    select {
+        background-color: #383838;
+        color: white;
+        border: unset;
+    }
+}

@@ -38,16 +38,12 @@
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
-    /* Set background color to dark grey
-    *  and set font color to white.
-    */
+    /* set background color of card and jumbotron in dark mode and make text white in cards */
     .card{
-        background-color: #383838; /* Dark grey */
+        background-color: #545454;
         color: white;
     }
-
-    /* Set font color to black */
     .jumbotron{
-        color: black;
+        background-color: #373737;
     }
 }

@@ -3,22 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin</title>
-        <link href="../css/base.css" rel="stylesheet">
         <link href="admin.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
     </head>
     <body>
-        <?php include("../navbar.php") ?>
+<?php
+    // Set variable level to go one level up to index.php
+    $level = 1;
+    include("../navbar.php");
+?>
         <div class="container content">
 
             <?php 
             $directory = "PDFs/";
             
-            echo "<div class='row'>";
+            echo "<div class='button-row'>";
             
             if(isset($_GET["folder"])) {
                 $directory .= $_GET["folder"];
-                echo "<a href='./'><button class='button round'>Zurück</button></a>";
+                $backUrl = "./";
+            } else{
+                $backUrl = "../";
             }
+
+            echo "<a href='$backUrl'><button class='button round'>Zurück</button></a>";
         
             echo "</div>";
 

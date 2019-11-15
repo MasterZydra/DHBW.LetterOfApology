@@ -119,15 +119,18 @@ a{
     /* Set font color white and background to grey */
     body {
         color: white;
-        background-color: #555555; /* Grey */
+        background-color: #5b5b5b;
+    }
+    /*navbar: set background to dark gray and font color to white*/
+    .navbar{
+        background-color: #373737;
+    }
+    .navbar .navbar-title{
+        color: white;
     }
 
-    /* Set background color for input fields to dark grey
-    * and font color to white
-    */
-    input,
-    select {
-        background-color: #383838; /* Dark grey */
-        color: white;
+    /*make button a bit darker*/
+    .button{
+        background-color: #365bca;
     }
 }
