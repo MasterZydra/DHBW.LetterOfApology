@@ -8,7 +8,7 @@
     </head>
     <body>
         <?php include("../navbar.php") ?>
-        <div class="container">
+        <div class="container content">
 
             <?php 
             $directory = "PDFs/";
@@ -22,10 +22,10 @@
             while(($file = $directoryHandle->read()) !== false) {
                 if($file != "." && $file != "..") {
                     if(!isset($_GET["folder"]) && is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
-                        echo "<a href='?folder=$file'>$file</a><br>";
+                        echo "<a class='list-item' href='?folder=$file'>$file</a><br>";
                     }
                     if(isset($_GET["folder"]) && !is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
-                        echo "<a href='$directory/$file' target='_blank'>$file</a><br>";
+                        echo "<a class='list-item' href='$directory/$file' target='_blank'>$file</a><br>";
                     }
                 }
             }

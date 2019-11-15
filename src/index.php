@@ -10,7 +10,7 @@
 <body>
     <?php include("navbar.php") ?>
 
-    <div class="container">
+    <div class="container content">
         <div class="jumbotron round">
             <h1>Say sorry the right way!</h1>
             <p class="lead">Mit diesem simplen PDF-Generator für Entschuldigungen in der Schule verzeiht dir dein Lehrer garantiert!</p>
