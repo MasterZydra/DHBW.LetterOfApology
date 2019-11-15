@@ -69,8 +69,7 @@
         echo "<input type='hidden' name='sort' value='";
         if(isset($_GET["sort"]) && $_GET["sort"] == "ASCDate") {
             echo "DESCDate";
-        }
-        else {
+        } else {
             echo "ASCDate";
         }
         echo "'><button class='button round'>	
@@ -79,8 +78,7 @@
             if (!isset($_GET["folder"])) {
                 if (isset($_GET["sort"]) && $_GET["sort"] == "DESC") {
                     arsort($folders);
-                }
-                else {
+                } else {
                     asort($folders);
                 }
                 foreach($folders as $folder) {
@@ -90,22 +88,17 @@
             else {
                 if (isset($_GET["sort"]) && $_GET["sort"] == "DESC") {
                     arsort($files);
-                }
-                elseif (isset($_GET["sort"]) && $_GET["sort"] == "ASCDate") {
+                } elseif (isset($_GET["sort"]) && $_GET["sort"] == "ASCDate") {
                     ksort($files);
-                }
-                else if (isset($_GET["sort"]) && $_GET["sort"] == "DESCDate") {
+                } else if (isset($_GET["sort"]) && $_GET["sort"] == "DESCDate") {
                     krsort($files);
-                }
-                else {
+                } else {
                     asort($files);
                 }    
                 $keys = array_keys($files);
                 foreach($keys as $key) {
                     echo "<tr><td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td><td>".date("d.m.Y", $key)."</td></tr>";
                 }
-                
-
             }
 
         echo "</table></div>";
