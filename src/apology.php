@@ -46,7 +46,7 @@
      */
     function getDayName($day) {
         // Get DateTime from String
-        $day = DateTime::createFromFormat('d.m.Y', $day);
+        $day = DateTime::createFromFormat('Y-m-d', $day);
         // Set to German
         setlocale(LC_TIME, "de_DE");
         // Return day name
@@ -58,7 +58,7 @@
      */
     function getFileName($date) {
         // Get DateTime from String
-        $day = DateTime::createFromFormat('d.m.Y', $date);
+        $day = DateTime::createFromFormat('Y-m-d', $date);
         // Add date to file name
         $file = $day->format('Y-m-d') . " Entschuldigung ";
         // Add type of apology
