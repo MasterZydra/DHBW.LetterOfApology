@@ -38,7 +38,7 @@
             while(($file = $directoryHandle->read()) !== false) {
                 if($file != "." && $file != "..") {
                     if(!isset($_GET["folder"]) && is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
-                        $folders[] = $file;
+                        $folders[filemtime($directory.DIRECTORY_SEPARATOR.$file)] = $file;
                     }
                     if(isset($_GET["folder"]) && !is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
                         $files[filemtime($directory.DIRECTORY_SEPARATOR.$file)] = $file;
@@ -59,8 +59,13 @@
         else {
             echo "ASC";
         }
-        echo "'><button class='button round'>	
-&#9207;</button></form>";
+        echo "'><button class='button round'>";
+        if(isset($_GET["sort"]) && $_GET["sort"] == "ASC") {
+            echo "&#9206;";
+        } else {
+            echo "&#9207;";
+        }
+        echo "</button></form>";
         echo "</th><th>Letzte Änderung";
         echo "<form method='get'>";
         if(isset($_GET["folder"])) {
@@ -73,18 +78,30 @@
         else {
             echo "ASCDate";
         }
-        echo "'><button class='button round'>	
-&#9207;</button></form>";
+        echo "'><button class='button round'>";
+        if(isset($_GET["sort"]) && $_GET["sort"] == "ASC") {
+            echo "&#9206;";
+        } else {
+            echo "&#9207;";
+        }
+        echo "</button></form>";
         echo "</th></tr>";
             if (!isset($_GET["folder"])) {
                 if (isset($_GET["sort"]) && $_GET["sort"] == "DESC") {
                     arsort($folders);
                 }
+                elseif (isset($_GET["sort"]) && $_GET["sort"] == "ASCDate") {
+                    ksort($folders);
+                }
+                else if (isset($_GET["sort"]) && $_GET["sort"] == "DESCDate") {
+                    krsort($folders);
+                }
                 else {
                     asort($folders);
                 }
-                foreach($folders as $folder) {
-                    echo "<tr><td><a class='list-item' href='?folder=$folder'>$folder</a></td></tr>";
+                $keys = array_keys($folders);
+                foreach($keys as $key) {
+                    echo "<tr><td><a class='list-item' href='?folder=$folders[$key]'>$folders[$key]</a></td><td>".date("d.m.Y", $key)."</td></tr>";
                 }
             }
             else {
