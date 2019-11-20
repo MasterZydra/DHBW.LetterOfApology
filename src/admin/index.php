@@ -65,7 +65,7 @@
 
             echo "'><button class='button round'>";
             
-            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASC") ? "&#9206;" : "&#9207;";
+            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASC") ? "&#11105;" : "&#11107;";
             
             echo "</button></form>
                 </th><th>Letzte Änderung";
@@ -80,7 +80,7 @@
 
             echo "'><button class='button round'>";
             
-            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASC") ? "&#9206;" : "&#9207;";
+            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASC") ? "&#11105;" : "&#11107;";
 
             echo "</button></form>";
             echo "</th>";
@@ -95,11 +95,7 @@
                         echo "ASCCount";
                     }
                     echo "'><button class='button round'>";
-                    if(isset($_GET["sort"]) && $_GET["sort"] == "ASCCount") {
-                        echo "&#9206;";
-                    } else {
-                        echo "&#9207;";
-                    }
+                    echo (isset($_GET["sort"]) && $_GET["sort"] == "ASCCount") ? "&#11105;" : "&#11107;";
                     echo "</button></form>";
                     echo "</th></tr>";
                     
