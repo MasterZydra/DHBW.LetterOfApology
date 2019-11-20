@@ -19,6 +19,7 @@ a[href^="?folder"] {
 th form{
     display: inline;
     margin-left: 1rem;
+}
 
 .button-row{
     display: flex;
@@ -30,7 +31,7 @@ th form{
     /* Set background color to dark grey
     *  and set font color to white.
     */
-    body div a{
+    .list-item {
         color: white;
     }
 }
