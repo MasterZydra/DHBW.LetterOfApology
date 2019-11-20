@@ -1,3 +1,9 @@
+/* Include this CSS file in HTML head AFTER the base CSS,
+ * so the dark color scheme is used correctly
+ * If you include this first the CSS for .list-item in dark mode
+ * is overwritten by the rules in the base css for .list-item.
+ * This problem only affects Safari.
+ */
 .list-item {
     padding-left: 1.7em;
     background-repeat: no-repeat;
