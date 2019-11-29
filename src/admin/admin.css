@@ -13,6 +13,22 @@
 .list {
     margin: 1rem 0;
 }
+.list table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.list table th{
+    text-align: left;
+}
+.list table .item-row:not(:nth-child(2)){
+    border-top: 1px solid darkgray;
+}
+.list table .item-row td{
+    padding: 1rem 0;
+}
+.list table .item-row:hover{
+    background-color: #e5e5e5;
+}
 
 a[href$=".pdf"] {
     background-image: url(img/pdf.png);
@@ -39,5 +55,8 @@ th form{
     */
     .list-item {
         color: white;
+    }
+    .list table .item-row:hover{
+        background-color: #535353;
     }
 }

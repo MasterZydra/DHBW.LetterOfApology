@@ -54,6 +54,7 @@
                     </a>
                 </div>";
         
+//            echo "<div class='list'><table><tr><th>Name
             echo "<div class='list'><table><tr><th>Name
                 <form method='get'>";
             // save given parameters in form
@@ -113,7 +114,7 @@
                     $keys = array_keys($folders);
                     foreach($keys as $key) {
                         $folder = $folders[$key];
-                        echo "<tr><td><a class='list-item' href='?folder=$folder[0]'>$folder[0]</a></td><td>".date("d.m.Y", $key)."</td><td>$folder[1]</td></tr>";
+                        echo "<tr class='item-row'><td><a class='list-item' href='?folder=$folder[0]'>$folder[0]</a></td><td>".date("d.m.Y", $key)."</td><td>$folder[1]</td></tr>";
                     }
                 }
                 else {
@@ -129,7 +130,7 @@
                     
                     $keys = array_keys($files);
                     foreach($keys as $key) {
-                        echo "<tr><td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td><td>".date("d.m.Y", $key)."</td></tr>";
+                        echo "<tr class='item-row'><td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td><td>".date("d.m.Y", $key)."</td></tr>";
                     }
 
 
