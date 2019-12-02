@@ -140,8 +140,14 @@
                     foreach($keys as $key) {
                         echo "<tr class='item-row'>
                                 <td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td>
-                                <td>".date("d.m.Y", $key)."</td>
-                            </tr>"; // name of the file and last change time are displayed for each element in the array $files
+                                <td>".date("d.m.Y", $key)."</td>";
+                        // Delete Button
+                        echo "<td><a class='button' href='deleteMessage.php?folder=$_GET[folder]";
+                        if (isset($_GET["sort"])) echo "&sort=$_GET[sort]";
+                        echo "&file=" . $directory . "/" . $files[$key];
+                        echo "'>Löschen</a></td>";
+                        
+                        echo "</tr>"; // name of the file and last change time are displayed for each element in the array $files
                     }
                 }
 
