@@ -18,14 +18,18 @@
             Wollen Sie die Datei wirklich löschen?
         </form>
         <a href='deleteMessage.php?delete=1&folder=<?php
+            // Build return address with folder and file parameter to delete a file/folder
             echo $_GET['folder'];
             echo "&file=$_GET[file]";
+            // If it was set, add sort param to return address
             if (isset($_GET['sort'])) echo "&sort=$_GET[sort]";
         ?>'>
             <button class='button round deleteButton'>Ja</button>
         </a>
         <a href='index.php?<?php
-            if (is_file($_GET['file'])) echo "folder=$_GET[file]";
+            // If is file, add folder to return address
+            if (is_file($_GET['file'])) echo "folder=$_GET[folder]";
+            // If it was set, add sort param to return address
             if (isset($_GET['sort']))   echo "&sort=$_GET[sort]";
         ?>'>
             <button class='button round'>Nein</button>
@@ -33,46 +37,35 @@
     </div>
 <?php
     } else {
-        if (!isset($_GET['file'])) {
-            echo "File not given!";
+        if (isset($_GET['file'])) {
+            // Build destination before deleting the folder and its files
+            $dest = "index.php?";
+            // Add parameter folder to return address only if it is a file
+            if (is_file($_GET['file'])) $dest .= "folder=$_GET[folder]";
+            // Add sort parameter if it was set
+            if (isset($_GET['sort']))   $dest .= "&sort=$_GET[sort]";
+            // Delete the directory
+            deleteDirectory($_GET['file']);
         }
-        
-        
-        $dest = "index.php?";
-        if (is_file($_GET['file'])) $dest .= "folder=$_GET[folder]";
-        if (isset($_GET['sort']))   $dest .= "&sort=$_GET[sort]";
-        
-        deleteDirectory($_GET['file']);
-        
+        // Go back to folder view
         header("Location: " . $dest);
         exit();
     }
 
-/* 
- * php delete function that deals with directories recursively
- */
-function deleteDirectory($dir) {
-    if (!file_exists($dir)) {
-        return true;
-    }
-
-    if (!is_dir($dir)) {
-        return unlink($dir);
-    }
-
-    foreach (scandir($dir) as $item) {
-        if ($item == '.' || $item == '..') {
-            continue;
+    // Delete all files and folders in given directory with itself included
+    function deleteDirectory($dir) {
+        // Leave if file/directory does not exist
+        if (!file_exists($dir)) return;
+        // If file then delete file
+        if (!is_dir($dir)) unlink($dir);
+        // Go throw sub directories and clear/delete them
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') continue;
+            deleteDirectory($dir . DIRECTORY_SEPARATOR . $item);
         }
-
-        if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
-            return false;
-        }
-
+        // Delete the directory
+        rmdir($dir);
     }
-
-    return rmdir($dir);
-}
 ?>
 </body>
 </html>
