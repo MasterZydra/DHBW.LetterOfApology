@@ -30,11 +30,11 @@
     background-color: #e5e5e5;
 }
 
-list-item a[href$=".pdf"] {
+a[href$=".pdf"][class="list-item"] {
     background-image: url(img/pdf.png);
 }
 
-list-item a[href^="?folder"] {
+a[href^="?folder"][class="list-item"] {
     background-image: url(img/folder.png);
 }
 
