@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Admin</title>
-        <link href="../css/base.css" rel="stylesheet">
-        <link href="admin.css" rel="stylesheet">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
 <?php
     // Set variable level to go one level up to index.php
     $level = 1;
