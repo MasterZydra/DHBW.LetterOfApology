@@ -24,9 +24,9 @@
         ?>'>
             <button class='button round deleteButton'>Ja</button>
         </a>
-        <a href='index.php?folder=<?php
-            echo $_GET['folder'];
-            if (isset($_GET['sort'])) echo "&sort=$_GET[sort]";
+        <a href='index.php?<?php
+            if (is_file($_GET['file'])) echo "folder=$_GET[file]";
+            if (isset($_GET['sort']))   echo "&sort=$_GET[sort]";
         ?>'>
             <button class='button round'>Nein</button>
         </a>
@@ -36,14 +36,43 @@
         if (!isset($_GET['file'])) {
             echo "File not given!";
         }
-        if (!unlink($_GET['file'])) {  
-            echo ("$_GET[file] cannot be deleted due to an error");  
-        }
         
-        $dest = "index.php?folder=$_GET[folder]&sort=$_GET[sort]";
+        
+        $dest = "index.php?";
+        if (is_file($_GET['file'])) $dest .= "folder=$_GET[folder]";
+        if (isset($_GET['sort']))   $dest .= "&sort=$_GET[sort]";
+        
+        deleteDirectory($_GET['file']);
+        
         header("Location: " . $dest);
         exit();
-    }     
+    }
+
+/* 
+ * php delete function that deals with directories recursively
+ */
+function deleteDirectory($dir) {
+    if (!file_exists($dir)) {
+        return true;
+    }
+
+    if (!is_dir($dir)) {
+        return unlink($dir);
+    }
+
+    foreach (scandir($dir) as $item) {
+        if ($item == '.' || $item == '..') {
+            continue;
+        }
+
+        if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+            return false;
+        }
+
+    }
+
+    return rmdir($dir);
+}
 ?>
 </body>
 </html>

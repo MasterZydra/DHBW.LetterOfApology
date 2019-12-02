@@ -121,8 +121,14 @@
                         echo "<tr class='item-row'>
                                 <td><a class='list-item' href='?folder=$folder[0]'>$folder[0]</a></td>
                                 <td>".date("d.m.Y", $key)."</td>
-                                <td>$folder[1]</td> 
-                            </tr>"; // name of the folder, last change time and number of documents are displayed for each element in the array $folders
+                                <td>$folder[1]</td>";
+                                                // Delete Button
+                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=$directory$folder[0]";
+                        if (isset($_GET["sort"])) echo "&sort=$_GET[sort]";
+                        echo "&file=$directory$folder[0]";
+                        echo "'>Löschen</a></td>";
+                        
+                        echo "</tr>"; // name of the folder, last change time and number of documents are displayed for each element in the array $folders
                     }
                 }
                 else {
