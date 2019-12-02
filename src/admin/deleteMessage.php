@@ -15,7 +15,7 @@
 ?>
     <div class="container content">
         <form action="" method="POST">
-            Wollen Sie die Datei wirklich löschen?
+            Wollen Sie <?php echo is_file($_GET['file']) ? "die Datei" : "das Verzeichnis"; ?> wirklich löschen?
         </form>
         <a href='deleteMessage.php?delete=1&folder=<?php
             // Build return address with folder and file parameter to delete a file/folder
