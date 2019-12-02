@@ -11,15 +11,20 @@
     // Set variable level to go one level up to index.php
     $level = 1;
     include("../navbar.php");
+    // If delete parameter is not set, show question
     if (!isset($_GET["delete"])) {
 ?>
     <div class="container content">
         <form action="" method="POST">
-            Wollen Sie <?php echo is_file($_GET['file']) ? "die Datei" : "das Verzeichnis"; ?> wirklich löschen?
+            Wollen Sie <?php
+            // Show file/folder depending on type
+            echo is_file($_GET['file']) ? "die Datei" : "das Verzeichnis";
+            ?> wirklich löschen?
         </form>
         <a href='deleteMessage.php?delete=1&folder=<?php
             // Build return address with folder and file parameter to delete a file/folder
             echo $_GET['folder'];
+            // Add file to URL
             echo "&file=$_GET[file]";
             // If it was set, add sort param to return address
             if (isset($_GET['sort'])) echo "&sort=$_GET[sort]";
@@ -29,7 +34,7 @@
         <a href='index.php?<?php
             // If is file, add folder to return address
             if (is_file($_GET['file'])) echo "folder=$_GET[folder]";
-            // If it was set, add sort param to return address
+            // If sort was set, add sort param to return address
             if (isset($_GET['sort']))   echo "&sort=$_GET[sort]";
         ?>'>
             <button class='button round'>Nein</button>
