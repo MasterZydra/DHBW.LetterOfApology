@@ -81,7 +81,7 @@
 
             echo "'><button class='button round'>";
             
-            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASC") ? "&#11105;" : "&#11107;";
+            echo (isset($_GET["sort"]) && $_GET["sort"] == "ASCDate") ? "&#11105;" : "&#11107;";
 
             echo "</button></form>";
             echo "</th>";
