@@ -143,8 +143,6 @@
                                 <td>".date("d.m.Y", $key)."</td>
                             </tr>"; // name of the file and last change time are displayed for each element in the array $files
                     }
-
-
                 }
 
             echo "</table></div>";
