@@ -7,21 +7,23 @@
     <link href="css/base.css" rel="stylesheet">
 </head>
 <body>
-    <?php include("navbar.php") ?>
+    <?php include("navbar.php") /* Integration of navigation bar */ ?>
     <div class="container content">
         <h2>Entschuldigung Tage</h2>
         <form action="apology.php" method="GET">
             <input type="hidden"
                 name="type" value="days">
 
-            <?php include("personalInfos.php") ?>
+            <?php include("personalInfos.php") /* Integration of personal information */ ?> 
 
             <div class="input-group">
                 <h4 class="input-group-caption">Informationen zur Abwesenheit</h4>
                 <div class="row">
                     <div class="col-2 input-field">
                         <label for="absenceDate">Abwesend von: </label>
-                        <input type="date" id="absenceDate" name="absenceDate" value="<?php echo date('Y-m-d'); ?>" >
+                        <input type="date" 
+                                id="absenceDate" name="absenceDate" 
+                                value="<?php echo date('Y-m-d'); ?>" > <!-- set current date as default value -->
                     </div>
 
                     <div class="col-2 input-field">

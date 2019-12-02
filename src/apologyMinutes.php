@@ -8,14 +8,14 @@
     <link href="css/base.css" rel="stylesheet">
 </head>
 <body>
-    <?php include("navbar.php") ?>
+    <?php include("navbar.php") /* Integration of navigation bar */ ?>
     <div class="container content">
         <h2>Entschuldigung Minuten</h2>
         <form action="apology.php" method="GET">
             <input type="hidden"
                 name="type" value="minutes">
 
-            <?php include("personalInfos.php") ?>
+            <?php include("personalInfos.php") /* Integration of personal Infos */ ?>
 
             <div class="input-group">
                 <h4 class="input-group-caption">Informationen zur Abwesenheit</h4>
