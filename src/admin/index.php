@@ -142,7 +142,7 @@
                                 <td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td>
                                 <td>".date("d.m.Y", $key)."</td>";
                         // Delete Button
-                        echo "<td><a class='button' href='deleteMessage.php?folder=$_GET[folder]";
+                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=$_GET[folder]";
                         if (isset($_GET["sort"])) echo "&sort=$_GET[sort]";
                         echo "&file=" . $directory . "/" . $files[$key];
                         echo "'>Löschen</a></td>";

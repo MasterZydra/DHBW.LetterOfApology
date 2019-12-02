@@ -22,7 +22,7 @@
             echo "&file=$_GET[file]";
             if (isset($_GET['sort'])) echo "&sort=$_GET[sort]";
         ?>'>
-            <button class='button round'>Ja</button>
+            <button class='button round deleteButton'>Ja</button>
         </a>
         <a href='index.php?folder=<?php
             echo $_GET['folder'];

@@ -60,3 +60,7 @@ th form{
         background-color: #535353;
     }
 }
+
+.deleteButton {
+    background-color: red;
+}
