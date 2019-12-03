@@ -22,7 +22,6 @@
         <div>
             <a class="navbar-title" href=".<?php echo isset($level) ? getBackPath($level) : ""; ?>/"><h1>Entschuldigungs-Generator</h1></a>
         </div>
-        <div>
         <?php
             // remove everything after '?' in URL if it exists
             $url = $_SERVER['REQUEST_URI'];
@@ -36,9 +35,8 @@
             $lastFolderInUrl = array_values(array_slice($urlArray, -1))[0];
             if ($lastFolderInUrl != "admin") {
                 // only show admin button if you are not in the admin space
-                echo "<a class='button round admin-button' href='admin/'>Admin</a>";
+                echo "<div><a class='button round admin-button' href='admin/'>Admin</a></div>";
             }
         ?>
-        </div>
     </div>
 </nav>
