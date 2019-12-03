@@ -23,9 +23,9 @@
         </form>
         <a href='deleteMessage.php?delete=1&amp;folder=<?php
             // Build return address with folder and file parameter to delete a file/folder
-            echo $_GET['folder'];
+            echo rawurlencode($_GET['folder']);
             // Add file to URL
-            echo "&file=$_GET[file]";
+            echo "&amp;file=" . rawurlencode($_GET['file']);
             // If it was set, add sort param to return address
             if (isset($_GET['sort'])) echo "&amp;sort=$_GET[sort]";
         ?>'>
@@ -33,9 +33,9 @@
         </a>
         <a href='index.php?<?php
             // If is file, add folder to return address
-            if (is_file($_GET['file'])) echo "folder=$_GET[folder]";
+            if (is_file($_GET['file'])) echo "folder=" . rawurlencode($_GET['folder']);
             // If sort was set, add sort param to return address
-            if (isset($_GET['sort']))   echo "&sort=$_GET[sort]";
+            if (isset($_GET['sort']))   echo "&amp;sort=" . rawurlencode($_GET['sort']);
         ?>'>
             <button class='button round'>Nein</button>
         </a>

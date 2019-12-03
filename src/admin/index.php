@@ -119,15 +119,15 @@
                     foreach($keys as $key) {
                         $folder = $folders[$key];
                         echo "<tr class='item-row'>
-                                <td><a class='list-item' href='?folder=$folder[0]'>$folder[0]</a></td>
+                                <td><a class='list-item' href='?folder=" . rawurlencode($folder[0]) . "'>$folder[0]</a></td>
                                 <td>".date("d.m.Y", $key)."</td>
                                 <td>$folder[1]</td>";
                         // Add delete button
-                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=$directory$folder[0]";
+                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=" . rawurlencode($directory) . urlencode($folder[0]);
                         // If sort was set, add sort param to return address
-                        if (isset($_GET["sort"])) echo "&sort=$_GET[sort]";
+                        if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
-                        echo "&file=$directory$folder[0]";
+                        echo "&amp;file=" . rawurlencode($directory) . rawurlencode($folder[0]);
                         echo "'>Löschen</a></td>";
                         echo "</tr>"; // name of the folder, last change time and number of documents are displayed for each element in the array $folders
                     }
@@ -146,24 +146,36 @@
                     $keys = array_keys($files);
                     foreach($keys as $key) {
                         echo "<tr class='item-row'>
-                                <td><a class='list-item' href='$directory/$files[$key]' target='_blank'>$files[$key]</a></td>
+                                <td><a class='list-item' href='" . encodePath($directory) . rawurlencode($files[$key]) . "' target='_blank'>$files[$key]</a></td>
                                 <td>".date("d.m.Y", $key)."</td>";
                         // Add delete button
-                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=$_GET[folder]";
+                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=" . rawurlencode($_GET['folder']);
                         // If sort was set, add sort param to return address
                         if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
-                        echo "&file=" . $directory . "/" . $files[$key];
+                        echo "&amp;file=" . rawurlencode($directory) . "/" . rawurlencode($files[$key]);
                         echo "'>Löschen</a></td>";
                         echo "</tr>"; // name of the file and last change time are displayed for each element in the array $files
                     }
                 }
 
-            echo "</table></div>";
+                echo "</table></div>";
 
                 $directoryHandle->close();
+            
+                // Encode an path. Do not encode the slash.
+                function encodePath($path) {
+                    // Split path on slash
+                    $parts = explode('/', $path);
+                    $ret = '';
+                    // Encode part and add slash
+                    foreach($parts as $part) {
+                        $ret .= rawurlencode($part);
+                        $ret .= '/';
+                    }
+                    return $ret;
+                }
             ?>
-
         </div>
     </body>
 </html>
