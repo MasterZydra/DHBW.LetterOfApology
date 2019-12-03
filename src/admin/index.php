@@ -151,7 +151,7 @@
                         // Add delete button
                         echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=$_GET[folder]";
                         // If sort was set, add sort param to return address
-                        if (isset($_GET["sort"])) echo "&sort=$_GET[sort]";
+                        if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
                         echo "&file=" . $directory . "/" . $files[$key];
                         echo "'>Löschen</a></td>";

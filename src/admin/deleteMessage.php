@@ -21,13 +21,13 @@
             echo is_file($_GET['file']) ? "die Datei" : "das Verzeichnis";
             ?> wirklich löschen?
         </form>
-        <a href='deleteMessage.php?delete=1&folder=<?php
+        <a href='deleteMessage.php?delete=1&amp;folder=<?php
             // Build return address with folder and file parameter to delete a file/folder
             echo $_GET['folder'];
             // Add file to URL
             echo "&file=$_GET[file]";
             // If it was set, add sort param to return address
-            if (isset($_GET['sort'])) echo "&sort=$_GET[sort]";
+            if (isset($_GET['sort'])) echo "&amp;sort=$_GET[sort]";
         ?>'>
             <button class='button round deleteButton'>Ja</button>
         </a>
@@ -48,7 +48,7 @@
             // Add parameter folder to return address only if it is a file
             if (is_file($_GET['file'])) $dest .= "folder=$_GET[folder]";
             // Add sort parameter if it was set
-            if (isset($_GET['sort']))   $dest .= "&sort=$_GET[sort]";
+            if (isset($_GET['sort']))   $dest .= "&amp;sort=$_GET[sort]";
             // Delete the directory
             deleteDirectory($_GET['file']);
         }
