@@ -60,9 +60,9 @@
 
                 <label for="typeOfDelay">Typ der Verspätung:</label><br>
                 <select id="typeOfDelay" name="typeOfDelay">
-                    <option value="Ich habe mich <strong>verspätet</strong>" selected>Ich habe mich <strong>verspätet</strong></option>
-                    <option value="Ich bin <strong>früher gegangen</strong>">Ich bin <strong>früher gegangen</strong></option>
-                    <option value="Ich bin <strong>später gekommen</strong>">Ich bin <strong>später gekommen</strong></option>
+                    <option value="Ich habe mich <strong>verspätet</strong>" selected>Ich habe mich verspätet</option>
+                    <option value="Ich bin <strong>früher gegangen</strong>">Ich bin früher gegangen</option>
+                    <option value="Ich bin <strong>später gekommen</strong>">Ich bin später gekommen</option>
                 </select><br>
             </div>
             <button class="button round">Erstellen</button>
