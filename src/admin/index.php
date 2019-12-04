@@ -123,7 +123,7 @@
                                 <td>".date("d.m.Y", $key)."</td>
                                 <td>$folder[1]</td>";
                         // Add delete button
-                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=" . rawurlencode($directory) . urlencode($folder[0]);
+                        echo "<td><a class='button deleteButton round' href='deleteMessage.php?folder=" . rawurlencode($directory) . urlencode($folder[0]);
                         // If sort was set, add sort param to return address
                         if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
@@ -149,7 +149,7 @@
                                 <td><a class='list-item' href='" . encodePath($directory) . rawurlencode($files[$key]) . "' target='_blank'>$files[$key]</a></td>
                                 <td>".date("d.m.Y", $key)."</td>";
                         // Add delete button
-                        echo "<td><a class='button deleteButton' href='deleteMessage.php?folder=" . rawurlencode($_GET['folder']);
+                        echo "<td><a class='button deleteButton round' href='deleteMessage.php?folder=" . rawurlencode($_GET['folder']);
                         // If sort was set, add sort param to return address
                         if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
