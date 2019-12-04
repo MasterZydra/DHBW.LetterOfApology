@@ -45,12 +45,12 @@
                     // check if you are not in the view of a folder and file is folder
                     if(!isset($_GET["folder"]) && is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
                         // save folder and number of files in the folder in array $folders, with key: last change time
-                        $folders[filemtime($directory.DIRECTORY_SEPARATOR.$file)] = [$file, count(scandir($directory.$file))-2];
+                        $folders[$file] = [filemtime($directory.DIRECTORY_SEPARATOR.$file), count(scandir($directory.$file))-2];
                     }
                     // check if you are in the view of a folder and file is not folder
                     if(isset($_GET["folder"]) && !is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
                         // save filename in array $files, with key: last change time
-                        $files[filemtime($directory.DIRECTORY_SEPARATOR.$file)] = $file;
+                        $files[$file] = filemtime($directory.DIRECTORY_SEPARATOR.$file);
                     }
                 }
             }
@@ -107,12 +107,12 @@
                     if (isset($_GET["sort"])) {
                         // sort array
                         switch ($_GET["sort"]) {
-                            case "DESC":        arsort($folders); break; // descending sorted by title
-                            case "ASCDate":     ksort($folders); break; // ascending sorted by last change time (key)
-                            case "DESCDate":    krsort($folders); break; // descending sorted by last change time (key)
+                            case "DESC":        ksort($folders); break; // descending sorted by title
+                            case "ASCDate":     asort($folders); break; // ascending sorted by last change time (key)
+                            case "DESCDate":    arsort($folders); break; // descending sorted by last change time (key)
                             case "ASCCount":    uasort($folders, 'cmpFunc'); break; // ascending sorted by number of documents
                             case "DESCCount":   uasort($folders, 'cmpFuncDesc'); break; // descending sorted by number of documents
-                            default:            asort($folders); // ascending sorted by title
+                            default:            krsort($folders); // ascending sorted by title
                         }
                     }
 
@@ -120,15 +120,15 @@
                     foreach($keys as $key) {
                         $folder = $folders[$key];
                         echo "<tr class='item-row'>
-                                <td><a class='list-item' href='?folder=" . rawurlencode($folder[0]) . "'>$folder[0]</a></td>
-                                <td>".date("d.m.Y", $key)."</td>
+                                <td><a class='list-item' href='?folder=" . rawurlencode($key) . "'>$key</a></td>
+                                <td>".date("d.m.Y", $folder[0])."</td>
                                 <td>$folder[1]</td>";
                         // Add delete button
-                        echo "<td><a class='button deleteButton round' href='deleteMessage.php?folder=" . rawurlencode($directory) . urlencode($folder[0]);
+                        echo "<td><a class='button deleteButton round' href='deleteMessage.php?folder=" . rawurlencode($directory) . urlencode($key);
                         // If sort was set, add sort param to return address
                         if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
-                        echo "&amp;file=" . rawurlencode($directory) . rawurlencode($folder[0]);
+                        echo "&amp;file=" . rawurlencode($directory) . rawurlencode($key);
                         echo "'>Löschen</a></td>";
                         echo "</tr>"; // name of the folder, last change time and number of documents are displayed for each element in the array $folders
                     }
@@ -137,24 +137,24 @@
                     echo "</tr>";
                     if(isset($_GET["sort"])) {
                         switch ($_GET["sort"]) {
-                            case "DESC":        arsort($files); break; // descending sorted by title
-                            case "ASCDate":     ksort($files); break; // ascending sorted by last change time (key)
-                            case "DESCDate":    krsort($files); break; // descending sorted by last change time (key)
-                            default:            asort($files); break; // ascending sorted by title
+                            case "DESC":        krsort($files); break; // descending sorted by title
+                            case "ASCDate":     asort($files); break; // ascending sorted by last change time (key)
+                            case "DESCDate":    arsort($files); break; // descending sorted by last change time (key)
+                            default:            ksort($files); break; // ascending sorted by title
                         }
                     }
                     
                     $keys = array_keys($files);
                     foreach($keys as $key) {
                         echo "<tr class='item-row'>
-                                <td><a class='list-item' href='" . encodePath($directory) . rawurlencode($files[$key]) . "' target='_blank'>$files[$key]</a></td>
-                                <td>".date("d.m.Y", $key)."</td>";
+                                <td><a class='list-item' href='" . encodePath($directory) . rawurlencode($key) . "' target='_blank'>$key</a></td>
+                                <td>".date("d.m.Y", $files[$key])."</td>";
                         // Add delete button
                         echo "<td><a class='button deleteButton round' href='deleteMessage.php?folder=" . rawurlencode($_GET['folder']);
                         // If sort was set, add sort param to return address
                         if (isset($_GET["sort"])) echo "&amp;sort=$_GET[sort]";
                         // Add file parameter to URL
-                        echo "&amp;file=" . rawurlencode($directory) . "/" . rawurlencode($files[$key]);
+                        echo "&amp;file=" . rawurlencode($directory) . "/" . rawurlencode($key);
                         echo "'>Löschen</a></td>";
                         echo "</tr>"; // name of the file and last change time are displayed for each element in the array $files
                     }
