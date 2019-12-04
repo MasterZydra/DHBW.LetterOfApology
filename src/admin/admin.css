@@ -4,24 +4,20 @@
  * is overwritten by the rules in the base css for .list-item.
  * This problem only affects Safari.
  */
-.list-item {
-    padding-left: 1.7em;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
 
+/*** list ***/
 .list {
     margin: 1rem 0;
 }
 .list table{
-    border-collapse: collapse;
+    border-collapse: collapse; /*you need this to make border-top work on .item-row*/
     width: 100%;
 }
 .list table th{
     text-align: left;
 }
 .list table .item-row:not(:nth-child(2)){
-    border-top: 1px solid darkgray;
+    border-top: 1px solid darkgray; /* adds a spacer between each row */
 }
 .list table .item-row td{
     padding: 1rem 0;
@@ -29,11 +25,16 @@
 .list table .item-row:hover{
     background-color: #e5e5e5;
 }
+.list-item { /* places icon for list items */
+    padding-left: 1.7em;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
+/* icons for folder/pdf rows */
 a[href$=".pdf"][class="list-item"] {
     background-image: url(img/pdf.png);
 }
-
 a[href^="?folder"][class="list-item"] {
     background-image: url(img/folder.png);
 }
@@ -43,9 +44,14 @@ th form{
     margin-left: 1rem;
 }
 
+/* align "Zurück"-button correctly */
 .button-row{
     display: flex;
     justify-content: space-between;
+}
+
+.deleteButton {
+    background-color: red;
 }
 
 /* Dark mode */
@@ -59,8 +65,4 @@ th form{
     .list table .item-row:hover{
         background-color: #535353;
     }
-}
-
-.deleteButton {
-    background-color: red;
 }

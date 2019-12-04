@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    <?php include("navbar.php") ?>
+    <?php include("navbar.php") /* Integration of navigation bar */?>
 
     <div class="container content">
         <div class="jumbotron round">

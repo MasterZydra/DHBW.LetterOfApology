@@ -32,7 +32,8 @@
                     <input type="time"
                         id="time_from" name="time_from"
 <?php
-    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+	//	safari specifc regex-pattern for time input
+	$user_agent = $_SERVER['HTTP_USER_AGENT'];
     if (stripos($user_agent, 'Safari')) {
         echo 'pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]"';
     }
@@ -45,6 +46,7 @@
                     <input type="time"
                         id="time_to" name="time_to"
 <?php
+	//	safari specifc regex-pattern for time input
     if (stripos($user_agent, 'Safari')) {
         echo 'pattern="(2[0-3])|([0-1]?[0-9]):[0-5][0-9]"';
     }
