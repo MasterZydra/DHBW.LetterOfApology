@@ -172,7 +172,7 @@ Grund: ' . getMaskedGet('explanation') . '
 
 <p></p>
 
-Mit freundlichen Grüßen
+Mit freundlichen Grüßen,
 
 <p></p>
 '
