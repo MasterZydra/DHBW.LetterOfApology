@@ -26,6 +26,19 @@
                 return $a[1] < $b[1];
             }
             
+            // Encode an path. Do not encode the slash.
+            function encodePath($path) {
+                // Split path on slash
+                $parts = explode('/', $path);
+                $ret = '';
+                // Encode part and add slash
+                foreach($parts as $part) {
+                    $ret .= rawurlencode($part);
+                    $ret .= '/';
+                }
+                return $ret;
+            }
+            
             $directory = "PDFs/";
             
             if(isset($_GET["folder"])) {
@@ -44,12 +57,12 @@
                 if($file != "." && $file != "..") {
                     // check if you are not in the view of a folder and file is folder
                     if(!isset($_GET["folder"]) && is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
-                        // save folder and number of files in the folder in array $folders, with key: last change time
+                        // save folder and number of files in the folder in array $folders, with key: folder name
                         $folders[$file] = [filemtime($directory.DIRECTORY_SEPARATOR.$file), count(scandir($directory.$file))-2];
                     }
                     // check if you are in the view of a folder and file is not folder
                     if(isset($_GET["folder"]) && !is_dir($directory.DIRECTORY_SEPARATOR.$file)) {
-                        // save filename in array $files, with key: last change time
+                        // save filename in array $files, with key: file name
                         $files[$file] = filemtime($directory.DIRECTORY_SEPARATOR.$file);
                     }
                 }
@@ -163,19 +176,6 @@
                 echo "</table></div>";
 
                 $directoryHandle->close();
-            
-                // Encode an path. Do not encode the slash.
-                function encodePath($path) {
-                    // Split path on slash
-                    $parts = explode('/', $path);
-                    $ret = '';
-                    // Encode part and add slash
-                    foreach($parts as $part) {
-                        $ret .= rawurlencode($part);
-                        $ret .= '/';
-                    }
-                    return $ret;
-                }
             ?>
         </div>
     </body>
