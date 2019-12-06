@@ -1,3 +1,5 @@
+/* Created by 9752762 */
+
 /*** input and selects ***/
 input,
 select {
@@ -5,7 +7,7 @@ select {
     width: 100%;
     height: 2.5rem;
     padding: 5px;
-    margin: 2px 0px 5px;
+    margin: 2px 0 5px;
     /*set a border around inputs*/
     border: 2px solid #bbb;
     border-radius: 5px;
