@@ -1,6 +1,9 @@
 # DHBW.LetterOfApology
 Projekt aus dem Fach Web Engineering II
 
+![Screenshot](img/Home.png)
+![Screenshot](img/Form.png)
+
 ## Admin-Portal funktioniert nicht
 Gegebenenfalls muss der Parameter `AuthUserFile` in der Datei `src/admin/.htaccess` folgender Pfad angepasst werden:
 ```
